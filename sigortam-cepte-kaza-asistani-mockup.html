@@ -16,7 +16,7 @@
   .caption { position: fixed; top: 14px; left: 50%; transform: translateX(-50%); font-size: 13px; color: #6B7280; }
   .phone { width: 360px; border: 1px solid #C7CEDD; border-radius: 36px; padding: 12px; background: #0F1830; }
   .notch { width: 60px; height: 5px; border-radius: 3px; background: rgba(255,255,255,0.25); margin: 0 auto 8px; }
-  .screen { border-radius: 26px; overflow: hidden; background: #EEF1F9; min-height: 680px; display: flex; flex-direction: column; }
+  .screen { border-radius: 26px; overflow: hidden; background: #EEF1F9; height: 680px; max-height: 680px; display: flex; flex-direction: column; }
   .content { flex: 1; overflow-y: auto; padding: 18px 18px 8px; }
   h1 { font-size: 24px; font-weight: 800; color: #16233F; margin: 0; }
   h2 { font-size: 18px; font-weight: 800; color: #16233F; margin: 0 0 4px; }
@@ -106,7 +106,7 @@
   .timeline-labels span { font-size: 10px; color: #6B7280; width: 60px; text-align: center; }
 
   .bottom-nav {
-    background: #16233F; padding: 10px 8px 14px; display: flex; justify-content: space-around;
+    background: #16233F; padding: 10px 8px 14px; display: flex; justify-content: space-around; margin-top: auto; flex-shrink: 0;
   }
   .nav-item { display: flex; flex-direction: column; align-items: center; gap: 3px; color: #AEB8D4; font-size: 10px; font-weight: 600; }
   .nav-item i { font-size: 20px; }
@@ -205,55 +205,44 @@
       </div>
 
       <div data-screen="login" style="margin:-18px -18px 0;">
-        <div class="home-header" style="min-height:560px;">
-          <div class="top-row">
-            <div class="avatar" style="background:rgba(255,255,255,0.6);"><i class="ti ti-arrow-left"></i></div>
-          </div>
-
-          <button type="button" class="btn-primary btn-danger" data-go="type" style="margin-top:6px; display:flex; align-items:center; justify-content:center; gap:8px;">
-            <i class="ti ti-alert-triangle" style="font-size:20px;"></i> Acil Durum — Kaza Bildir
-          </button>
-          <p style="font-size:11px; color:#3B4C73; text-align:center; margin-top:6px;">Şifreye gerek yok, doğrudan kaza asistanına geçer</p>
-
-          <div style="display:flex; align-items:center; gap:10px; margin:18px 0;">
-            <div style="flex:1; height:1px; background:rgba(22,35,63,0.15);"></div>
-            <span style="font-size:11px; color:#3B4C73;">veya giriş yapın</span>
-            <div style="flex:1; height:1px; background:rgba(22,35,63,0.15);"></div>
-          </div>
-
-          <div style="display:flex; align-items:center; gap:12px; margin-bottom:22px;">
-            <div style="width:48px; height:48px; border-radius:50%; background:#fff; display:flex; align-items:center; justify-content:center; font-size:22px; color:#3B5BDB;"><i class="ti ti-user-circle"></i></div>
-            <div>
-              <p style="font-size:12px; color:#3B4C73;">İyi Günler,</p>
-              <h1 style="font-size:22px;">BURAK</h1>
+        <div class="home-header" style="min-height:660px; display:flex; flex-direction:column; padding:20px 18px 26px;">
+          <div style="flex:1; display:flex; flex-direction:column; justify-content:center; margin-top:-60px;">
+            <div style="text-align:center; margin-bottom:28px;">
+              <div style="width:72px; height:72px; border-radius:50%; background:#fff; display:flex; align-items:center; justify-content:center; font-size:34px; color:#3B5BDB; margin:0 auto 12px;"><i class="ti ti-user-circle"></i></div>
+              <p style="font-size:13px; color:#3B4C73;">İyi Günler,</p>
+              <h1 style="font-size:24px; margin-top:2px;">BURAK</h1>
             </div>
+
+            <div style="background:#fff; border-radius:14px; padding:14px 16px; display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
+              <span style="font-size:14px; color:#9CA3AF;">Şifre</span>
+              <i class="ti ti-eye-off" style="color:#9CA3AF;"></i>
+            </div>
+            <p style="text-align:right; font-size:12px; color:#3B5BDB; font-weight:700; margin-bottom:20px;">Şifremi Unuttum</p>
+
+            <button type="button" class="btn-primary" data-go="home">Giriş Yap</button>
           </div>
 
-          <div style="background:#fff; border-radius:14px; padding:14px 16px; display:flex; align-items:center; justify-content:space-between; margin-bottom:8px;">
-            <span style="font-size:14px; color:#9CA3AF;">Şifre</span>
-            <i class="ti ti-eye-off" style="color:#9CA3AF;"></i>
-          </div>
-          <p style="text-align:right; font-size:12px; color:#3B5BDB; font-weight:700; margin-bottom:18px;">Şifremi Unuttum</p>
-
-          <button type="button" class="btn-primary" data-go="home">Giriş Yap</button>
-
-          <p style="text-align:center; font-size:12px; color:#3B5BDB; font-weight:700; margin-top:220px;">Farklı Kullanıcı ile Giriş Yap</p>
+          <p style="text-align:center; font-size:12px; color:#3B5BDB; font-weight:700; margin-top:auto; padding-top:16px;">Farklı Kullanıcı ile Giriş Yap</p>
         </div>
       </div>
 
       <div data-screen="home" style="margin:-18px -18px 0; display:none;">
         <div class="home-header">
           <div class="top-row">
-            <div class="avatar"><i class="ti ti-user"></i></div>
             <i class="ti ti-bell bell"></i>
           </div>
-          <h1>Hoş geldiniz</h1>
-          <div class="login-card">
+          <h1>Hoş Geldiniz</h1>
+          <div class="login-card" id="home-login-card">
             <p>Anadolu Sigorta ayrıcalıklarından yararlanmak için giriş yapın.</p>
             <a href="#">Giriş Yap →</a>
           </div>
         </div>
         <div style="padding:18px;">
+          <h3>Acil Durum İşlemleri</h3>
+          <button type="button" class="btn-primary btn-danger" data-go="type" style="display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:16px; padding:18px; font-size:17px;">
+            <i class="ti ti-alert-triangle" style="font-size:24px;"></i> Acil Durum ve Hasar Rehberi
+          </button>
+
           <h3>Hızlı İşlemler</h3>
           <div class="quick-row">
             <div class="quick-card">
@@ -268,11 +257,6 @@
               <i class="ti ti-building-hospital main-icon"></i>
               <span>Anlaşmalı Sağlık Kurumları</span>
             </div>
-            <button type="button" class="quick-card hero" data-go="type">
-              <span class="badge-new">YENİ</span>
-              <i class="ti ti-alert-triangle main-icon"></i>
-              <span>Akıllı Kaza Asistanı</span>
-            </button>
           </div>
 
           <div id="claims-section" style="display:none;">
@@ -324,14 +308,101 @@
         <h2 id="guide-title" style="margin-bottom:12px;"></h2>
         <div id="guide-steps" style="margin-bottom:16px;"></div>
         <button type="button" class="btn-primary" id="guide-continue-btn">Devam Et</button>
+        <button type="button" class="btn-outline" data-go="home">Ana Sayfaya Dön</button>
+      </div>
+
+      <div data-screen="single_kvkk" style="display:none;">
+        <button type="button" class="btn-back" data-go="type"><i class="ti ti-chevron-left"></i>Geri</button>
+        <div style="text-align:center; margin-bottom:16px;">
+          <i class="ti ti-shield-lock" style="font-size:44px; color:#3B5BDB;"></i>
+        </div>
+        <h2 style="text-align:center; margin-bottom:6px;">KVKK ve Hak Bildirgesi</h2>
+        <p class="sub" style="text-align:center;">Devam etmeden önce aşağıdaki maddeleri okuyup onaylayınız.</p>
+
+        <div class="summary-card" style="margin-bottom:14px;">
+          <div class="step" style="margin-bottom:10px;">
+            <span class="step-num">1</span>
+            <span class="step-text">Kişisel verileriniz (konum, fotoğraf, araç bilgisi) 6698 sayılı KVKK kapsamında işlenecektir.</span>
+          </div>
+          <div class="step" style="margin-bottom:10px;">
+            <span class="step-num">2</span>
+            <span class="step-text">Verileriniz yalnızca hasar dosyanızın oluşturulması ve sigorta süreçlerinin yürütülmesi amacıyla kullanılacaktır.</span>
+          </div>
+          <div class="step" style="margin-bottom:10px;">
+            <span class="step-num">3</span>
+            <span class="step-text">Fotoğraf ve konum bilgileriniz, yalnızca açık rızanız ile eksper ve sigorta ekiplerine iletilebilir.</span>
+          </div>
+          <div class="step" style="margin-bottom:10px;">
+            <span class="step-num">4</span>
+            <span class="step-text">Verilerinizin silinmesini, düzeltilmesini veya aktarılmasını talep etme hakkına sahipsiniz.</span>
+          </div>
+          <div class="step" style="margin-bottom:0;">
+            <span class="step-num">5</span>
+            <span class="step-text">Detaylı bilgi için KVKK Aydınlatma Metni'ni inceleyebilirsiniz.</span>
+          </div>
+        </div>
+
+        <button type="button" class="btn-primary" id="single-kvkk-accept-btn" style="padding:18px; font-size:17px;">Okudum, Onaylıyorum — Devam Et</button>
+      </div>
+
+      <div data-screen="fire_kvkk" style="display:none;">
+        <button type="button" class="btn-back" data-go="type"><i class="ti ti-chevron-left"></i>Geri</button>
+        <div style="text-align:center; margin-bottom:16px;">
+          <i class="ti ti-shield-lock" style="font-size:44px; color:#3B5BDB;"></i>
+        </div>
+        <h2 style="text-align:center; margin-bottom:6px;">KVKK ve Hak Bildirgesi</h2>
+        <p class="sub" style="text-align:center;">Devam etmeden önce aşağıdaki maddeleri okuyup onaylayınız.</p>
+
+        <div class="summary-card" style="margin-bottom:14px;">
+          <div class="step" style="margin-bottom:10px;">
+            <span class="step-num">1</span>
+            <span class="step-text">Kişisel verileriniz (konum, fotoğraf, araç bilgisi) 6698 sayılı KVKK kapsamında işlenecektir.</span>
+          </div>
+          <div class="step" style="margin-bottom:10px;">
+            <span class="step-num">2</span>
+            <span class="step-text">Verileriniz yalnızca hasar dosyanızın oluşturulması ve acil yardım koordinasyonu amacıyla kullanılacaktır.</span>
+          </div>
+          <div class="step" style="margin-bottom:10px;">
+            <span class="step-num">3</span>
+            <span class="step-text">Konum bilginiz, yalnızca açık rızanız ile itfaiye ve acil yardım ekiplerine iletilebilir.</span>
+          </div>
+          <div class="step" style="margin-bottom:10px;">
+            <span class="step-num">4</span>
+            <span class="step-text">Verilerinizin silinmesini, düzeltilmesini veya aktarılmasını talep etme hakkına sahipsiniz.</span>
+          </div>
+          <div class="step" style="margin-bottom:0;">
+            <span class="step-num">5</span>
+            <span class="step-text">Detaylı bilgi için KVKK Aydınlatma Metni'ni inceleyebilirsiniz.</span>
+          </div>
+        </div>
+
+        <button type="button" class="btn-primary" id="fire-kvkk-accept-btn" style="padding:18px; font-size:17px;">Okudum, Onaylıyorum — Devam Et</button>
+      </div>
+
+      <div data-screen="fire_action" style="display:none;">
+        <button type="button" class="btn-back" data-go="fire_kvkk"><i class="ti ti-chevron-left"></i>Geri</button>
+
+        <a href="tel:112" style="display:flex; align-items:center; justify-content:center; gap:10px; width:100%; background:#E03131; border:none; color:#fff; border-radius:14px; padding:22px; font-size:20px; font-weight:800; text-decoration:none; margin-bottom:18px;">
+          <i class="ti ti-phone-call" style="font-size:28px;"></i> 112'yi Ara
+        </a>
+
+        <h2 style="margin-bottom:12px;">Yangın / Duman Durumunda Yapılacaklar</h2>
+        <div style="margin-bottom:16px;">
+          <div class="step"><span class="step-num">1</span><span class="step-text">Bulunduğunuz alanı derhal terk edin, tüm kişileri tahliye edin.</span></div>
+          <div class="step"><span class="step-num">2</span><span class="step-text">Yangın kaynağından güvenli mesafeye uzaklaşın.</span></div>
+          <div class="step"><span class="step-num">3</span><span class="step-text">Dumandan korunmak için ağzınızı ve burnunuzu ıslak bezle kapatın, alçaktan ilerleyin.</span></div>
+          <div class="step"><span class="step-num">4</span><span class="step-text">112'yi arayarak itfaiye, ambulans ve gerekli ekipleri bilgilendirin.</span></div>
+          <div class="step"><span class="step-num">5</span><span class="step-text">Yangına müdahale etmeye çalışmayın, profesyonel ekipleri bekleyin.</span></div>
+        </div>
+
+        <button type="button" class="btn-outline" id="fire-notify-location-btn"><i class="ti ti-map-pin" style="vertical-align:-2px;"></i> Konumumu İtfaiyeye Paylaş</button>
+        <button type="button" class="btn-primary" data-go="home" style="margin-top:10px;">Ana Sayfaya Dön</button>
       </div>
 
       <div data-screen="report_photo" style="display:none;">
         <button type="button" class="btn-back" data-go="guide"><i class="ti ti-chevron-left"></i>Geri</button>
         <h2>Hasar Tespiti</h2>
-        <p class="sub">Konum ve fotoğraf eklerseniz süreç hızlanır.</p>
-        <p class="field-label"><i class="ti ti-map-pin"></i>Konum</p>
-        <button type="button" id="loc-btn" class="field-btn">Konumu otomatik al</button>
+        <p class="sub">Fotoğraf eklerseniz süreç hızlanır.</p>
         <p class="field-label"><i class="ti ti-camera"></i>Hasar fotoğrafı</p>
         <button type="button" id="photo-btn" class="field-btn">Fotoğraf çek</button>
         <div id="ai-result" class="ai-card">
@@ -344,9 +415,12 @@
 
       <div data-screen="report_note" style="display:none;">
         <button type="button" class="btn-back" data-go="report_photo"><i class="ti ti-chevron-left"></i>Geri</button>
-        <h2>Kısaca Anlatın</h2>
-        <p class="sub">Kaza nasıl gerçekleşti? Bu bilgi otomatik tutanağa eklenecek.</p>
+        <h2>Kaza Takip Tutanağı hazırlamamıza yardım edin</h2>
+        <p class="field-label"><i class="ti ti-map-pin"></i>Konum</p>
+        <p class="muted" style="margin-bottom:6px;">Rapor için konum bilgisi sağlayın.</p>
+        <button type="button" id="loc-btn" class="field-btn">Konumu otomatik al</button>
         <p class="field-label"><i class="ti ti-notes"></i>Açıklama</p>
+        <p class="muted" style="margin-bottom:6px;">Kaza nasıl gerçekleşti? Bu bilgi otomatik tutanağa eklenecek.</p>
         <textarea id="note-input" placeholder="Örn: Kavşakta sağdan gelen araç kırmızı ışıkta geçti ve sağ ön tarafıma çarptı."></textarea>
         <button type="button" class="btn-primary" id="note-continue-btn">Devam Et</button>
       </div>
@@ -354,7 +428,7 @@
       <div data-screen="report_preview" style="display:none;">
         <button type="button" class="btn-back" data-go="report_note"><i class="ti ti-chevron-left"></i>Geri</button>
         <h2>Otomatik Kaza Tespit Tutanağı</h2>
-        <p class="sub"><i class="ti ti-wand" style="vertical-align:-2px;"></i> Girdiğiniz bilgilerden otomatik dolduruldu, kontrol edip düzenleyebilirsiniz.</p>
+        <p class="sub"><i class="ti ti-wand" style="vertical-align:-2px;"></i> Sigorta acentenize iletilmek üzere girdiğiniz bilgilerden otomatik dolduruldu, kontrol edip düzenleyebilirsiniz.</p>
         <p class="field-label">Olay Türü</p>
         <input class="text-input" id="prev-type" readonly>
         <p class="field-label">Tarih / Saat</p>
@@ -455,29 +529,66 @@
           <p class="sub" id="diag-detail" style="text-align:center;"></p>
           <div id="diag-action-box"></div>
         </div>
+        <button type="button" class="btn-outline" data-go="home" style="margin-top:12px;">Ana Menüye Dön</button>
+      </div>
+
+      <div data-screen="breakdown_kvkk" style="display:none;">
+        <button type="button" class="btn-back" data-go="type"><i class="ti ti-chevron-left"></i>Geri</button>
+        <div style="text-align:center; margin-bottom:16px;">
+          <i class="ti ti-shield-lock" style="font-size:44px; color:#3B5BDB;"></i>
+        </div>
+        <h2 style="text-align:center; margin-bottom:6px;">KVKK ve Hak Bildirgesi</h2>
+        <p class="sub" style="text-align:center;">Devam etmeden önce aşağıdaki maddeleri okuyup onaylayınız.</p>
+
+        <div class="summary-card" style="margin-bottom:14px;">
+          <div class="step" style="margin-bottom:10px;">
+            <span class="step-num">1</span>
+            <span class="step-text">Kişisel verileriniz (konum, araç bilgisi, fotoğraf) 6698 sayılı KVKK kapsamında işlenecektir.</span>
+          </div>
+          <div class="step" style="margin-bottom:10px;">
+            <span class="step-num">2</span>
+            <span class="step-text">Verileriniz yalnızca arıza teşhisi ve yol yardım koordinasyonu amacıyla kullanılacaktır.</span>
+          </div>
+          <div class="step" style="margin-bottom:10px;">
+            <span class="step-num">3</span>
+            <span class="step-text">Konum bilginiz, yalnızca açık rızanız ile yol yardım ekiplerine iletilebilir.</span>
+          </div>
+          <div class="step" style="margin-bottom:10px;">
+            <span class="step-num">4</span>
+            <span class="step-text">Verilerinizin silinmesini, düzeltilmesini veya aktarılmasını talep etme hakkına sahipsiniz.</span>
+          </div>
+          <div class="step" style="margin-bottom:0;">
+            <span class="step-num">5</span>
+            <span class="step-text">Detaylı bilgi için KVKK Aydınlatma Metni'ni inceleyebilirsiniz.</span>
+          </div>
+        </div>
+
+        <button type="button" class="btn-primary" id="breakdown-kvkk-accept-btn" style="padding:18px; font-size:17px;">Okudum, Onaylıyorum — Devam Et</button>
       </div>
 
       <div data-screen="breakdown_tracking" style="display:none;">
-        <h2 id="tracking-title" style="text-align:center; margin-bottom:4px;">Yolda Yardım Yaklaşıyor</h2>
-        <p class="sub" style="text-align:center;" id="tracking-sub">Anadolu Yol Yardım size doğru geliyor.</p>
-        <div style="display:flex; justify-content:center; margin:20px 0;">
-          <div style="position:relative; width:120px; height:120px; display:flex; align-items:center; justify-content:center;">
-            <div class="radar-ring" style="animation-delay:0s;"></div>
-            <div class="radar-ring" style="animation-delay:0.6s;"></div>
-            <div class="radar-ring" style="animation-delay:1.2s;"></div>
-            <div style="position:relative; width:52px; height:52px; border-radius:50%; background:#3B5BDB; display:flex; align-items:center; justify-content:center; z-index:2;">
-              <i class="ti ti-tow-truck" style="font-size:26px; color:#fff;"></i>
+        <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:520px;">
+          <h2 id="tracking-title" style="text-align:center; margin-bottom:4px;">Yolda Yardım Yaklaşıyor</h2>
+          <p class="sub" style="text-align:center;" id="tracking-sub">Anadolu Yol Yardım size doğru geliyor.</p>
+          <div style="display:flex; justify-content:center; margin:28px 0;">
+            <div style="position:relative; width:120px; height:120px; display:flex; align-items:center; justify-content:center;">
+              <div class="radar-ring" style="animation-delay:0s;"></div>
+              <div class="radar-ring" style="animation-delay:0.6s;"></div>
+              <div class="radar-ring" style="animation-delay:1.2s;"></div>
+              <div style="position:relative; width:52px; height:52px; border-radius:50%; background:#3B5BDB; display:flex; align-items:center; justify-content:center; z-index:2;">
+                <i class="ti ti-tow-truck" style="font-size:26px; color:#fff;"></i>
+              </div>
             </div>
           </div>
-        </div>
-        <div style="text-align:center; margin-bottom:18px;">
-          <span id="tracking-eta" style="font-size:34px; font-weight:800; color:#16233F;">18</span>
-          <span style="font-size:16px; color:#6B7280;"> dk</span>
-          <p class="muted">tahmini varış süresi</p>
-        </div>
-        <div id="tracking-arrived-box" style="display:none;">
-          <div class="info-box green" style="text-align:center;"><i class="ti ti-check"></i> Ekip konumunuza ulaştı!</div>
-          <button type="button" class="btn-primary" id="tracking-continue-btn">Devam Et</button>
+          <div style="text-align:center; margin-bottom:18px;">
+            <span id="tracking-eta" style="font-size:42px; font-weight:800; color:#16233F;">18</span>
+            <span style="font-size:18px; color:#6B7280;"> dk</span>
+            <p class="muted" style="margin-top:4px;">tahmini varış süresi</p>
+          </div>
+          <div id="tracking-arrived-box" style="display:none; width:100%;">
+            <div class="info-box green" style="text-align:center;"><i class="ti ti-check"></i> Ekip konumunuza ulaştı!</div>
+            <button type="button" class="btn-primary" id="tracking-continue-btn">Devam Et</button>
+          </div>
         </div>
       </div>
 
@@ -490,6 +601,59 @@
         </div>
         <div class="summary-card" id="breakdown-summary-card"></div>
         <button type="button" class="btn-primary" data-go="home">Ana Sayfaya Dön</button>
+      </div>
+
+      <div data-screen="injury_kvkk" style="display:none;">
+        <button type="button" class="btn-back" data-go="type"><i class="ti ti-chevron-left"></i>Geri</button>
+        <div style="text-align:center; margin-bottom:16px;">
+          <i class="ti ti-shield-lock" style="font-size:44px; color:#3B5BDB;"></i>
+        </div>
+        <h2 style="text-align:center; margin-bottom:6px;">KVKK ve Hak Bildirgesi</h2>
+        <p class="sub" style="text-align:center;">Devam etmeden önce aşağıdaki maddeleri okuyup onaylayınız.</p>
+
+        <div class="summary-card" style="margin-bottom:14px;">
+          <div class="step" style="margin-bottom:10px;">
+            <span class="step-num">1</span>
+            <span class="step-text">Kişisel verileriniz (konum, fotoğraf, sağlık bilgisi) 6698 sayılı KVKK kapsamında işlenecektir.</span>
+          </div>
+          <div class="step" style="margin-bottom:10px;">
+            <span class="step-num">2</span>
+            <span class="step-text">Verileriniz yalnızca hasar dosyanızın oluşturulması ve acil yardım koordinasyonu amacıyla kullanılacaktır.</span>
+          </div>
+          <div class="step" style="margin-bottom:10px;">
+            <span class="step-num">3</span>
+            <span class="step-text">Sağlık bilgileriniz, yalnızca açık rızanız ile 112 acil sağlık ekiplerine iletilebilir.</span>
+          </div>
+          <div class="step" style="margin-bottom:10px;">
+            <span class="step-num">4</span>
+            <span class="step-text">Verilerinizin silinmesini, düzeltilmesini veya aktarılmasını talep etme hakkına sahipsiniz.</span>
+          </div>
+          <div class="step" style="margin-bottom:0;">
+            <span class="step-num">5</span>
+            <span class="step-text">Detaylı bilgi için KVKK Aydınlatma Metni'ni inceleyebilirsiniz.</span>
+          </div>
+        </div>
+
+        <button type="button" class="btn-primary" id="kvkk-accept-btn" style="padding:18px; font-size:17px;">Okudum, Onaylıyorum — Devam Et</button>
+      </div>
+
+      <div data-screen="injury_action" style="display:none;">
+        <button type="button" class="btn-back" data-go="injury_kvkk"><i class="ti ti-chevron-left"></i>Geri</button>
+
+        <a href="tel:112" style="display:flex; align-items:center; justify-content:center; gap:10px; width:100%; background:#E03131; border:none; color:#fff; border-radius:14px; padding:22px; font-size:20px; font-weight:800; text-decoration:none; margin-bottom:18px;">
+          <i class="ti ti-phone-call" style="font-size:28px;"></i> 112'yi Ara
+        </a>
+
+        <h2 style="margin-bottom:12px;">Yaralanma Durumunda Yapılacaklar</h2>
+        <div style="margin-bottom:16px;">
+          <div class="step"><span class="step-num">1</span><span class="step-text">Hemen 112'yi arayın.</span></div>
+          <div class="step"><span class="step-num">2</span><span class="step-text">Yaralıyı zorunlu olmadıkça oynatmayın.</span></div>
+          <div class="step"><span class="step-num">3</span><span class="step-text">Kaza yerini işaretleyin.</span></div>
+        </div>
+
+        <button type="button" class="btn-primary btn-danger" id="injury-called-btn">Evet, 112'yi aradım / yardım geldi</button>
+        <button type="button" class="btn-outline" id="injury-notify-contact-btn"><i class="ti ti-message-circle" style="vertical-align:-2px;"></i> Acil durum kişisine konum gönder</button>
+        <button type="button" class="btn-outline" id="injury-notify-health-btn"><i class="ti ti-first-aid-kit" style="vertical-align:-2px;"></i> Sağlık Bilgilerimi Göster</button>
       </div>
 
       <div data-screen="safety_confirm" style="display:none;">
@@ -512,14 +676,61 @@
 
       <div data-screen="safety_followup" style="display:none;">
         <div style="text-align:center; margin-bottom:16px;">
-          <i class="ti ti-heart-handshake" style="font-size:40px; color:#2F9E44;"></i>
+          <i class="ti ti-ambulance" style="font-size:40px; color:#3B5BDB;"></i>
         </div>
-        <h2 style="text-align:center;">Güvendesiniz</h2>
-        <p class="sub" style="text-align:center;">Hazır olduğunuzda devam edebilirsiniz, acele etmeyin.</p>
-        <button type="button" class="btn-outline" id="notify-contact-btn" style="display:none;"><i class="ti ti-message-circle" style="vertical-align:-2px;"></i> Acil durum kişisine konum gönder</button>
-        <button type="button" class="btn-outline" id="notify-health-btn" style="display:none;"><i class="ti ti-first-aid-kit" style="vertical-align:-2px;"></i> Sağlık Bilgilerimi Paylaş</button>
+        <h2 style="text-align:center;">Yardım Yolda</h2>
+        <p class="sub" style="text-align:center;">112 ekipleri bilgilendirildi. Yardım gelene kadar aşağıdaki adımları uygulayın.</p>
+
+        <div class="summary-card" style="margin-bottom:14px;">
+          <div class="step" style="margin-bottom:10px;">
+            <span class="step-num">1</span>
+            <span class="step-text">Sakin olun ve bulunduğunuz yerde bekleyin, gereksiz hareket etmeyin.</span>
+          </div>
+          <div class="step" style="margin-bottom:10px;">
+            <span class="step-num">2</span>
+            <span class="step-text">Kanama varsa temiz bir bezle hafifçe bastırarak baskı uygulayın.</span>
+          </div>
+          <div class="step" style="margin-bottom:10px;">
+            <span class="step-num">3</span>
+            <span class="step-text">Yaralı kişiyi zorunlu olmadıkça oynatmayın, boyun ve sırt yaralanması riski olabilir.</span>
+          </div>
+          <div class="step" style="margin-bottom:10px;">
+            <span class="step-num">4</span>
+            <span class="step-text">Bilinci açık olan yaralıyı sakinleştirin ve konuşarak bilinç durumunu takip edin.</span>
+          </div>
+          <div class="step" style="margin-bottom:0;">
+            <span class="step-num">5</span>
+            <span class="step-text">Yardım ekibi gelene kadar kaza yerini güvence altına alın, trafikte iseniz trafiği uyarın.</span>
+          </div>
+        </div>
+
+        <h3 style="margin-top:4px;"><i class="ti ti-building-hospital" style="color:#3B5BDB; vertical-align:-2px;"></i> En Yakın Hastaneler</h3>
+        <div class="summary-card" style="margin-bottom:14px;">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+            <div>
+              <p style="font-size:13px; font-weight:700; color:#16233F;">Acıbadem Maslak Hastanesi</p>
+              <p class="muted">1,2 km · Acil Servis Açık</p>
+            </div>
+            <span class="badge badge-approved">Açık</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+            <div>
+              <p style="font-size:13px; font-weight:700; color:#16233F;">Liv Hospital Vadistanbul</p>
+              <p class="muted">2,8 km · Acil Servis Açık</p>
+            </div>
+            <span class="badge badge-approved">Açık</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center;">
+            <div>
+              <p style="font-size:13px; font-weight:700; color:#16233F;">İstinye Üniversitesi Hastanesi</p>
+              <p class="muted">3,5 km · Acil Servis Açık</p>
+            </div>
+            <span class="badge badge-approved">Açık</span>
+          </div>
+        </div>
+
         <button type="button" class="btn-primary" data-go="report_note">Şimdi Hasar Bildir</button>
-        <button type="button" class="btn-outline" data-go="home">Daha Sonra Bildiririm</button>
+        <button type="button" class="btn-outline" data-go="home">Ana Sayfaya Dön</button>
       </div>
 
     </div>
@@ -545,12 +756,17 @@ var PROGRESS_STEPS = {
   report_preview: 6,
   report_pdf: 7,
   breakdown_diagnosis: 3,
+  injury_kvkk: 2,
+  injury_action: 3,
+  fire_kvkk: 2,
+  fire_action: 3,
   safety_confirm: 3,
   safety_followup: 4
 };
 function progressTotal() {
   if (state.type === "breakdown") return 3;
-  if (state.type === "fire" || state.type === "injury") return 4;
+  if (state.type === "injury") return 4;
+  if (state.type === "fire") return 4;
   if (state.type === "collision") return 7;
   return 6; // single: type,guide,photo,note,preview,pdf
 }
@@ -582,9 +798,11 @@ var GUIDES = {
     "Karşı taraf ile iletişim bilgilerini not alın."
   ]},
   single: { title: "Tekli kaza sonrası yapılacaklar", urgent: false, steps: [
-    "Aracı yol kenarına çekin, flaşörleri yakın.",
-    "Kendinizi ve yolcuları kontrol edin.",
-    "Hasar ve olay yerinin fotoğrafını çekin."
+    "Aracınızı güvenli bir şekilde yol kenarına çekin ve dörtlü flaşörleri yakın.",
+    "Kendinizi ve araçtaki tüm yolcuları yaralanma açısından kontrol edin, gerekirse 112'yi arayın.",
+    "Reflektörünüzü aracın en az 30 metre arkasına yerleştirin.",
+    "Hasarın ve olay yerinin fotoğraflarını farklı açılardan çekin.",
+    "Sigorta şirketinize bilgi verin veya uygulama üzerinden hasar bildirimi yapın."
   ]},
   breakdown: { title: "Arıza durumunda yapılacaklar", urgent: false, steps: [
     "Aracı trafiği engellemeyecek şekilde çekin.",
@@ -611,10 +829,10 @@ var AI_RESULTS = [
 ];
 
 var DIAGNOSES = [
-  { icon: "ti-engine", color: "#E03131", bg: "#FDECEC", title: "Motor Arıza Lambası", detail: "Motor kontrol lambası yanıyor. Aracı çalıştırmaya devam etmek risklidir.", action: "cekici" },
-  { icon: "ti-battery-2", color: "#F08C00", bg: "#FFF3E0", title: "Akü / Şarj Uyarısı", detail: "Akü şarj sistemi sorunlu olabilir.", action: "yolyardim" },
-  { icon: "ti-temperature", color: "#E03131", bg: "#FDECEC", title: "Motor Sıcaklık Uyarısı", detail: "Motor aşırı ısınmış olabilir. Kaputu hemen açmayın.", action: "cekici" },
-  { icon: "ti-gas-station", color: "#3B5BDB", bg: "#E9EEFC", title: "Yakıt Seviyesi Düşük", detail: "Yakıt seviyeniz kritik seviyede.", action: "istasyon" }
+  { icon: "ti-engine", color: "#E03131", bg: "#FDECEC", title: "Motor Arıza Lambası", detail: "Motor kontrol lambası yanıyor. Aracı çalıştırmaya devam etmek risklidir.", action: "cekici", tips: ["Motoru kapatın ve tekrar çalıştırmayın.", "Çekici ile en yakın yetkili servise götürün.", "Araç sigortanızın kapsamını kontrol edin."] },
+  { icon: "ti-battery-2", color: "#F08C00", bg: "#FFF3E0", title: "Akü / Şarj Uyarısı", detail: "Akü şarj sistemi sorunlu olabilir.", action: "yolyardim", tips: ["Gereksiz elektrikli cihazları kapatın.", "Yol yardım ekibinden takviye veya akü değişimi isteyin."] },
+  { icon: "ti-temperature", color: "#E03131", bg: "#FDECEC", title: "Motor Sıcaklık Uyarısı", detail: "Motor aşırı ısınmış olabilir. Kaputu hemen açmayın.", action: "cekici", tips: ["Aracı güvenli bir yere çekip motoru kapatın.", "Motor soğumadan kaputu açmayın.", "Soğutma sıvısı seviyesini servis kontrolü ettirin."] },
+  { icon: "ti-gas-station", color: "#3B5BDB", bg: "#E9EEFC", title: "Yakıt Seviyesi Düşük", detail: "Yakıt seviyeniz kritik seviyede.", action: "istasyon", tips: ["Klima ve gereksiz elektriği kapatarak yakıt tasarrufu yapın.", "En yakın istasyona düşük devirde seyredin."] }
 ];
 
 function renderTypeList() {
@@ -624,7 +842,8 @@ function renderTypeList() {
     var row = document.createElement("button");
     row.type = "button";
     row.className = "type-row" + (t.urgent ? " urgent" : "");
-    row.setAttribute("data-go", "guide");
+    var goTarget = t.id === "injury" ? "injury_kvkk" : (t.id === "breakdown" ? "breakdown_kvkk" : (t.id === "fire" ? "fire_kvkk" : (t.id === "single" ? "single_kvkk" : "guide")));
+    row.setAttribute("data-go", goTarget);
     row.setAttribute("data-type", t.id);
     row.innerHTML = '<i class="ti ' + t.icon + '"></i><span>' + t.label + '</span><i class="ti ti-chevron-right"></i>';
     listEl.appendChild(row);
@@ -698,16 +917,12 @@ function loadGuide(typeId) {
   if (typeId === "breakdown") {
     btn.textContent = "Devam Et: Arıza Teşhisi";
     btn.onclick = function() { showScreen("breakdown_diagnosis"); };
-  } else if (typeId === "fire" || typeId === "injury") {
+  } else if (typeId === "fire") {
     btn.textContent = "Devam Et";
     btn.onclick = function() {
-      document.getElementById("safety-question").textContent = typeId === "fire"
-        ? "İtfaiye/112'yi aradınız mı?" : "112'yi aradınız mı?";
-      document.getElementById("notify-contact-btn").style.display = typeId === "injury" ? "block" : "none";
-      document.getElementById("notify-health-btn").style.display = typeId === "injury" ? "block" : "none";
-      document.getElementById("notify-fire-location-btn").style.display = typeId === "fire" ? "block" : "none";
-      document.getElementById("injury-count-box").style.display = typeId === "injury" ? "block" : "none";
-      if (typeId === "injury") renderInjuryCountButtons();
+      document.getElementById("safety-question").textContent = "İtfaiye/112'yi aradınız mı?";
+      document.getElementById("notify-fire-location-btn").style.display = "block";
+      document.getElementById("injury-count-box").style.display = "none";
       showScreen("safety_confirm");
     };
   } else {
@@ -720,7 +935,13 @@ document.querySelectorAll("[data-go]").forEach(function(btn) {
   btn.addEventListener("click", function(e) {
     var target = e.currentTarget.getAttribute("data-go");
     var typeId = e.currentTarget.getAttribute("data-type");
-    if (typeId) loadGuide(typeId);
+    if (typeId) {
+      state.type = typeId;
+      if (typeId !== "injury" && typeId !== "breakdown" && typeId !== "fire" && typeId !== "single") loadGuide(typeId);
+    }
+    if (target === "home" && e.currentTarget.closest("[data-screen='login']")) {
+      document.getElementById("home-login-card").style.display = "none";
+    }
     showScreen(target);
   });
 });
@@ -1138,19 +1359,27 @@ document.getElementById("diag-photo-btn").addEventListener("click", function() {
     document.getElementById("diag-detail").textContent = d.detail;
     var actionBox = document.getElementById("diag-action-box");
     actionBox.innerHTML = "";
+    if (d.tips && d.tips.length) {
+      var tipsHTML = '<div class="info-box blue" style="margin-bottom:12px; font-size:12px; line-height:1.7;">';
+      tipsHTML += '<p style="font-weight:700; margin-bottom:4px;">Ne yapabilirsiniz?</p>';
+      d.tips.forEach(function(tip) { tipsHTML += '• ' + tip + '<br>'; });
+      tipsHTML += '</div>';
+      actionBox.innerHTML = tipsHTML;
+    }
     var actionBtn = document.createElement("button");
     actionBtn.type = "button";
     actionBtn.className = "btn-primary" + (d.action === "cekici" ? " btn-danger" : "");
     var summaryHTML = "";
+    var diagInfo = '<p class="label">Arıza Teşhisi</p><p class="value">' + d.title + '</p><p class="label">Detay</p><p class="value">' + d.detail + '</p>';
     if (d.action === "cekici") {
       actionBtn.textContent = "Çekici Çağır";
-      summaryHTML = '<p class="label">Talep</p><p class="value">Çekici Hizmeti</p><p class="label">Firma</p><p class="value">Anadolu Yol Yardım</p><p class="label">Tahmini Varış</p><p class="value">18 dakika</p>';
+      summaryHTML = diagInfo + '<p class="label">Talep</p><p class="value">Çekici Hizmeti</p><p class="label">Firma</p><p class="value">Anadolu Yol Yardım</p><p class="label">Tahmini Varış</p><p class="value">18 dakika</p>';
     } else if (d.action === "yolyardim") {
       actionBtn.textContent = "Yol Yardım Çağır";
-      summaryHTML = '<p class="label">Talep</p><p class="value">Yol Yardım Hizmeti</p><p class="label">Firma</p><p class="value">Anadolu Yol Yardım</p><p class="label">Tahmini Varış</p><p class="value">22 dakika</p>';
+      summaryHTML = diagInfo + '<p class="label">Talep</p><p class="value">Yol Yardım Hizmeti</p><p class="label">Firma</p><p class="value">Anadolu Yol Yardım</p><p class="label">Tahmini Varış</p><p class="value">22 dakika</p>';
     } else if (d.action === "istasyon") {
       actionBtn.textContent = "En Yakın İstasyona Yönlendir";
-      summaryHTML = '<p class="label">Yönlendirme</p><p class="value">Shell İstasyonu - 2,3 km</p>';
+      summaryHTML = diagInfo + '<p class="label">Yönlendirme</p><p class="value">Shell İstasyonu - 2,3 km</p>';
     }
     actionBtn.addEventListener("click", function() {
       document.getElementById("breakdown-summary-card").innerHTML = summaryHTML;
@@ -1171,6 +1400,27 @@ document.getElementById("diag-photo-btn").addEventListener("click", function() {
     actionBox.appendChild(actionBtn);
     document.getElementById("diag-result").style.display = "block";
   }, 900);
+});
+
+document.getElementById("breakdown-kvkk-accept-btn").addEventListener("click", function() {
+  loadGuide("breakdown");
+  showScreen("guide");
+});
+
+document.getElementById("single-kvkk-accept-btn").addEventListener("click", function() {
+  loadGuide("single");
+  showScreen("guide");
+});
+
+document.getElementById("fire-kvkk-accept-btn").addEventListener("click", function() {
+  showScreen("fire_action");
+});
+
+document.getElementById("fire-notify-location-btn").addEventListener("click", function() {
+  var btn = document.getElementById("fire-notify-location-btn");
+  btn.textContent = "Konum İtfaiyeye İletildi ✓";
+  btn.style.color = "#2F9E44";
+  btn.style.borderColor = "#2F9E44";
 });
 
 function renderInjuryCountButtons() {
@@ -1197,15 +1447,30 @@ document.getElementById("notify-fire-location-btn").addEventListener("click", fu
   btn.style.borderColor = "#2F9E44";
 });
 
-document.getElementById("notify-health-btn").addEventListener("click", function() {
-  var btn = document.getElementById("notify-health-btn");
-  btn.innerHTML = "Kan Grubu: A Rh+ · Bilinen Alerji: Yok — Sağlık ekibine iletildi ✓";
+document.getElementById("safety-called-btn").addEventListener("click", function() {
+  showScreen("safety_followup");
+});
+
+document.getElementById("kvkk-accept-btn").addEventListener("click", function() {
+  showScreen("injury_action");
+});
+
+document.getElementById("injury-called-btn").addEventListener("click", function() {
+  showScreen("safety_followup");
+});
+
+document.getElementById("injury-notify-contact-btn").addEventListener("click", function() {
+  var btn = document.getElementById("injury-notify-contact-btn");
+  btn.textContent = "Konum gönderildi ✓";
   btn.style.color = "#2F9E44";
   btn.style.borderColor = "#2F9E44";
 });
 
-document.getElementById("safety-called-btn").addEventListener("click", function() {
-  showScreen("safety_followup");
+document.getElementById("injury-notify-health-btn").addEventListener("click", function() {
+  var btn = document.getElementById("injury-notify-health-btn");
+  btn.innerHTML = "Kan Grubu: A Rh+ · Bilinen Alerji: Yok — Sağlık ekibine iletildi ✓";
+  btn.style.color = "#2F9E44";
+  btn.style.borderColor = "#2F9E44";
 });
 
 function startTracking(title, sub, startMinutes) {
@@ -1232,12 +1497,6 @@ document.getElementById("tracking-continue-btn").addEventListener("click", funct
   showScreen("breakdown_result");
 });
 
-document.getElementById("notify-contact-btn").addEventListener("click", function() {
-  var btn = document.getElementById("notify-contact-btn");
-  btn.textContent = "Konum gönderildi ✓";
-  btn.style.color = "#2F9E44";
-  btn.style.borderColor = "#2F9E44";
-});
 </script>
 </body>
 </html>
