@@ -399,6 +399,117 @@
         <button type="button" class="btn-primary" data-go="home" style="margin-top:10px;">Ana Sayfaya Dön</button>
       </div>
 
+      <div data-screen="declaration_personal" style="display:none;">
+        <button type="button" class="btn-back" data-go="guide"><i class="ti ti-chevron-left"></i>Geri</button>
+        <h2>Kaza Beyanı</h2>
+        <p class="sub">Adım 1/5 — Kişisel Bilgiler</p>
+        <p class="field-label"><i class="ti ti-user"></i> Ad Soyad</p>
+        <input class="text-input" id="decl-name" placeholder="Ad Soyad" value="Burak Yılmaz">
+        <p class="field-label"><i class="ti ti-id"></i> T.C. Kimlik No</p>
+        <input class="text-input" id="decl-tc" placeholder="T.C. Kimlik No" value="12345678901">
+        <p class="field-label"><i class="ti ti-phone"></i> Telefon</p>
+        <input class="text-input" id="decl-phone" placeholder="Telefon" value="0532 000 00 00">
+        <p class="field-label"><i class="ti ti-mail"></i> E-posta</p>
+        <input class="text-input" id="decl-email" placeholder="E-posta" value="burak@email.com">
+        <div class="info-box blue"><i class="ti ti-info-circle"></i> Bilgileriniz sistemden otomatik dolduruldu, düzenleyebilirsiniz.</div>
+        <button type="button" class="btn-primary" data-go="declaration_location">Devam Et</button>
+      </div>
+
+      <div data-screen="declaration_location" style="display:none;">
+        <button type="button" class="btn-back" data-go="declaration_personal"><i class="ti ti-chevron-left"></i>Geri</button>
+        <h2>Kaza Beyanı</h2>
+        <p class="sub">Adım 2/5 — Konum Bilgisi</p>
+        <p class="field-label"><i class="ti ti-map-pin"></i> Kaza Konumu</p>
+        <button type="button" id="decl-loc-btn" class="field-btn">Konumu otomatik al</button>
+        <p class="field-label"><i class="ti ti-road"></i> Adres / Yol Tarifi</p>
+        <textarea id="decl-address" placeholder="Örn: E-5 Otoyolu, Zincirlikuyu çıkışı, İstanbul yönü"></textarea>
+        <p class="field-label"><i class="ti ti-calendar"></i> Kaza Tarihi / Saati</p>
+        <input class="text-input" id="decl-datetime" readonly>
+        <div class="info-box blue"><i class="ti ti-info-circle"></i> Tarih ve saat otomatik kaydedildi.</div>
+        <button type="button" class="btn-primary" data-go="declaration_license">Devam Et</button>
+      </div>
+
+      <div data-screen="declaration_license" style="display:none;">
+        <button type="button" class="btn-back" data-go="declaration_location"><i class="ti ti-chevron-left"></i>Geri</button>
+        <h2>Kaza Beyanı</h2>
+        <p class="sub">Adım 3/5 — Ehliyet / Ruhsat Fotoğrafı</p>
+        <div style="text-align:center; margin-bottom:16px;">
+          <i class="ti ti-license" style="font-size:44px; color:#3B5BDB;"></i>
+        </div>
+        <p class="field-label"><i class="ti ti-camera"></i> Ehliyet Ön Yüz</p>
+        <button type="button" id="decl-license-front-btn" class="field-btn">Fotoğraf çek</button>
+        <p class="field-label"><i class="ti ti-camera"></i> Ehliyet Arka Yüz</p>
+        <button type="button" id="decl-license-back-btn" class="field-btn">Fotoğraf çek</button>
+        <p class="field-label"><i class="ti ti-camera"></i> Araç Ruhsatı</p>
+        <button type="button" id="decl-ruhsat-btn" class="field-btn">Fotoğraf çek</button>
+        <div class="info-box"><i class="ti ti-alert-circle"></i> Belge fotoğraflarının net ve okunaklı olduğundan emin olun.</div>
+        <button type="button" class="btn-primary" data-go="declaration_photos">Devam Et</button>
+      </div>
+
+      <div data-screen="declaration_photos" style="display:none;">
+        <button type="button" class="btn-back" data-go="declaration_license"><i class="ti ti-chevron-left"></i>Geri</button>
+        <h2>Kaza Beyanı</h2>
+        <p class="sub">Adım 4/5 — Olay Yeri Fotoğrafları</p>
+        <div style="text-align:center; margin-bottom:16px;">
+          <i class="ti ti-photo" style="font-size:44px; color:#3B5BDB;"></i>
+        </div>
+        <p class="muted" style="margin-bottom:12px;">Hasarın ve olay yerinin fotoğraflarını farklı açılardan çekin. En az 2 fotoğraf eklemeniz önerilir.</p>
+        <p class="field-label"><i class="ti ti-camera"></i> Araç Hasarı (Yakın Çekim)</p>
+        <button type="button" id="decl-photo1-btn" class="field-btn">Fotoğraf çek</button>
+        <p class="field-label"><i class="ti ti-camera"></i> Araç Hasarı (Genel Görünüm)</p>
+        <button type="button" id="decl-photo2-btn" class="field-btn">Fotoğraf çek</button>
+        <p class="field-label"><i class="ti ti-camera"></i> Olay Yeri / Çevre</p>
+        <button type="button" id="decl-photo3-btn" class="field-btn">Fotoğraf çek</button>
+        <p class="field-label"><i class="ti ti-camera"></i> Ek Fotoğraf (Opsiyonel)</p>
+        <button type="button" id="decl-photo4-btn" class="field-btn">Fotoğraf çek</button>
+        <button type="button" class="btn-primary" data-go="declaration_speech">Devam Et</button>
+      </div>
+
+      <div data-screen="declaration_speech" style="display:none;">
+        <button type="button" class="btn-back" data-go="declaration_photos"><i class="ti ti-chevron-left"></i>Geri</button>
+        <h2>Kaza Beyanı</h2>
+        <p class="sub">Adım 5/5 — Kaza Anı Anlatımı</p>
+        <div style="text-align:center; margin-bottom:16px;">
+          <i class="ti ti-message-chatbot" style="font-size:44px; color:#3B5BDB;"></i>
+        </div>
+        <p class="muted" style="margin-bottom:12px;">Kaza nasıl gerçekleştiğini yazarak veya sesli olarak anlatın. Bu bilgi beyan tutanağınıza eklenecektir.</p>
+        <div style="position:relative;">
+          <textarea id="decl-speech-text" placeholder="Örn: Yol kenarındaki bariyere çarptım, yağmurlu havada fren mesafesi uzadı..." style="min-height:120px; padding-right:50px;"></textarea>
+          <button type="button" id="decl-mic-btn" style="position:absolute; right:8px; bottom:18px; width:40px; height:40px; border-radius:50%; background:#3B5BDB; border:none; color:#fff; font-size:18px; display:flex; align-items:center; justify-content:center; cursor:pointer;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="11" rx="3"></rect><path d="M5 10a7 7 0 0 0 14 0"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg>
+          </button>
+        </div>
+        <div id="decl-mic-status" style="display:none; text-align:center; margin-bottom:10px;">
+          <span style="font-size:12px; color:#3B5BDB; font-weight:700;">Dinleniyor...</span>
+        </div>
+        <div class="info-box blue"><i class="ti ti-info-circle"></i> Mikrofon butonuna basarak sesinizle de anlatabilirsiniz. Ses otomatik olarak yazıya çevrilecektir.</div>
+        <button type="button" class="btn-primary" id="decl-complete-btn">Beyanı Tamamla</button>
+      </div>
+
+      <div data-screen="declaration_done" style="display:none;">
+        <div style="text-align:center; margin-bottom:16px;">
+          <div style="width:64px; height:64px; border-radius:50%; background:#D3F9D8; display:flex; align-items:center; justify-content:center; margin:0 auto 12px;">
+            <i class="ti ti-check" style="font-size:32px; color:#2B8A3E;"></i>
+          </div>
+          <h2 style="text-align:center;">Kaza Beyanı Tamamlandı</h2>
+          <p class="muted" style="margin-top:6px;">Beyanınız başarıyla kaydedildi.</p>
+        </div>
+        <div class="summary-card">
+          <p class="label">Ad Soyad</p>
+          <p class="value" id="decl-done-name">-</p>
+          <p class="label">Konum</p>
+          <p class="value" id="decl-done-location">-</p>
+          <p class="label">Tarih / Saat</p>
+          <p class="value" id="decl-done-datetime">-</p>
+          <p class="label">Belgeler</p>
+          <p class="value" id="decl-done-docs">-</p>
+          <p class="label">Fotoğraflar</p>
+          <p class="value" id="decl-done-photos">-</p>
+        </div>
+        <button type="button" class="btn-primary" id="decl-to-damage-btn">Devam Et: Hasar Tespiti</button>
+        <button type="button" class="btn-outline" data-go="home">Ana Sayfaya Dön</button>
+      </div>
+
       <div data-screen="report_photo" style="display:none;">
         <button type="button" class="btn-back" data-go="guide"><i class="ti ti-chevron-left"></i>Geri</button>
         <h2>Hasar Tespiti</h2>
@@ -751,6 +862,12 @@ var state = { type: null, severity: null, counterpartyStatus: null, claims: [] }
 var PROGRESS_STEPS = {
   type: 1,
   guide: 2,
+  declaration_personal: 3,
+  declaration_location: 4,
+  declaration_license: 5,
+  declaration_photos: 6,
+  declaration_speech: 7,
+  declaration_done: 8,
   report_photo: 3,
   report_note: 4,
   report_counterparty: 5,
@@ -769,7 +886,8 @@ function progressTotal() {
   if (state.type === "injury") return 4;
   if (state.type === "fire") return 4;
   if (state.type === "collision") return 7;
-  return 6; // single: type,guide,photo,note,preview,pdf
+  if (state.type === "single") return 8;
+  return 6;
 }
 function updateProgress(screenName) {
   var wrap = document.getElementById("progress-wrap");
@@ -926,6 +1044,9 @@ function loadGuide(typeId) {
       document.getElementById("injury-count-box").style.display = "none";
       showScreen("safety_confirm");
     };
+  } else if (typeId === "single") {
+    btn.textContent = "Devam Et: Kaza Beyanı";
+    btn.onclick = function() { showScreen("declaration_personal"); };
   } else {
     btn.textContent = "Devam Et: Hasar Tespiti";
     btn.onclick = function() { showScreen("report_photo"); };
@@ -1496,6 +1617,96 @@ function startTracking(title, sub, startMinutes) {
 
 document.getElementById("tracking-continue-btn").addEventListener("click", function() {
   showScreen("breakdown_result");
+});
+
+// Declaration pipeline event listeners
+document.getElementById("decl-loc-btn").addEventListener("click", function() {
+  var btn = document.getElementById("decl-loc-btn");
+  btn.textContent = "41.02760, 28.97840 — Konum alındı";
+  btn.style.color = "#2F9E44";
+  btn.style.borderStyle = "solid";
+  btn.style.borderColor = "#2F9E44";
+});
+
+function showScreenHook(name) {
+  if (name === "declaration_location") {
+    document.getElementById("decl-datetime").value = new Date().toLocaleString("tr-TR");
+  }
+}
+var origShowScreen = showScreen;
+showScreen = function(name) {
+  showScreenHook(name);
+  origShowScreen(name);
+};
+
+function mockPhotoBtn(btnId) {
+  document.getElementById(btnId).addEventListener("click", function() {
+    var btn = document.getElementById(btnId);
+    btn.textContent = "Çekiliyor...";
+    btn.style.color = "#3B5BDB";
+    btn.style.borderStyle = "solid";
+    btn.style.borderColor = "#3B5BDB";
+    setTimeout(function() {
+      btn.textContent = "Fotoğraf eklendi ✓";
+      btn.style.color = "#2F9E44";
+      btn.style.borderColor = "#2F9E44";
+    }, 600);
+  });
+}
+mockPhotoBtn("decl-license-front-btn");
+mockPhotoBtn("decl-license-back-btn");
+mockPhotoBtn("decl-ruhsat-btn");
+mockPhotoBtn("decl-photo1-btn");
+mockPhotoBtn("decl-photo2-btn");
+mockPhotoBtn("decl-photo3-btn");
+mockPhotoBtn("decl-photo4-btn");
+
+var micRecording = false;
+document.getElementById("decl-mic-btn").addEventListener("click", function() {
+  var btn = document.getElementById("decl-mic-btn");
+  var status = document.getElementById("decl-mic-status");
+  var textarea = document.getElementById("decl-speech-text");
+  if (!micRecording) {
+    micRecording = true;
+    btn.style.background = "#E03131";
+    btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" stroke="none"><rect x="6" y="6" width="12" height="12" rx="2"></rect></svg>';
+    status.style.display = "block";
+  } else {
+    micRecording = false;
+    btn.style.background = "#3B5BDB";
+    btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="11" rx="3"></rect><path d="M5 10a7 7 0 0 0 14 0"></path><line x1="12" y1="19" x2="12" y2="22"></line></svg>';
+    status.style.display = "none";
+    if (!textarea.value.trim()) {
+      textarea.value = "Sağ şeritte seyir halindeyken yağmurlu havada fren mesafesi uzadı ve yol kenarındaki bariyere çarptım. Hızım yaklaşık 60 km/h civarındaydı.";
+    }
+  }
+});
+
+document.getElementById("decl-complete-btn").addEventListener("click", function() {
+  var textarea = document.getElementById("decl-speech-text");
+  if (!textarea.value.trim()) {
+    textarea.value = "Sağ şeritte seyir halindeyken yağmurlu havada fren mesafesi uzadı ve yol kenarındaki bariyere çarptım. Hızım yaklaşık 60 km/h civarındaydı.";
+  }
+  var locBtn = document.getElementById("decl-loc-btn");
+  var locText = locBtn.textContent.indexOf("41.02") > -1 ? "İstanbul, Zincirlikuyu (41.02760, 28.97840)" : "Belirtilmedi";
+  document.getElementById("decl-done-name").textContent = document.getElementById("decl-name").value || "-";
+  document.getElementById("decl-done-location").textContent = locText;
+  document.getElementById("decl-done-datetime").textContent = document.getElementById("decl-datetime").value || new Date().toLocaleString("tr-TR");
+  var docCount = 0;
+  ["decl-license-front-btn", "decl-license-back-btn", "decl-ruhsat-btn"].forEach(function(id) {
+    if (document.getElementById(id).textContent.indexOf("eklendi") > -1) docCount++;
+  });
+  document.getElementById("decl-done-docs").textContent = docCount > 0 ? docCount + " belge yüklendi" : "Belge eklenmedi";
+  var photoCount = 0;
+  ["decl-photo1-btn", "decl-photo2-btn", "decl-photo3-btn", "decl-photo4-btn"].forEach(function(id) {
+    if (document.getElementById(id).textContent.indexOf("eklendi") > -1) photoCount++;
+  });
+  document.getElementById("decl-done-photos").textContent = photoCount > 0 ? photoCount + " fotoğraf yüklendi" : "Fotoğraf eklenmedi";
+  showScreen("declaration_done");
+});
+
+document.getElementById("decl-to-damage-btn").addEventListener("click", function() {
+  showScreen("report_photo");
 });
 
 </script>
