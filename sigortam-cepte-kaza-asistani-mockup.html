@@ -345,6 +345,61 @@
         <button type="button" class="btn-primary" id="single-kvkk-accept-btn" style="padding:18px; font-size:17px;">Okudum, Onaylıyorum — Devam Et</button>
       </div>
 
+      <div data-screen="single_public_damage" style="display:none;">
+        <button type="button" class="btn-back" data-go="single_kvkk"><i class="ti ti-chevron-left"></i>Geri</button>
+        <div style="text-align:center; margin-bottom:16px;">
+          <i class="ti ti-barrier-block" style="font-size:44px; color:#3B5BDB;"></i>
+        </div>
+        <h2 style="text-align:center; margin-bottom:6px;">Kamu Malına Hasar Var mı?</h2>
+        <p class="sub" style="text-align:center;">Bariyere, trafik levhasına, aydınlatma direğine veya başka bir kamu malına zarar verdiyseniz polis tutanağı zorunludur.</p>
+
+        <div class="info-box" style="margin-bottom:16px;">
+          <i class="ti ti-alert-circle"></i> Kamu malına zarar verilmesi durumunda olay yerine polis çağırılması ve resmi tutanak tutulması yasal zorunluluktur.
+        </div>
+
+        <button type="button" class="btn-primary btn-danger" id="single-public-yes-btn" style="display:flex; align-items:center; justify-content:center; gap:8px; padding:18px;">
+          <i class="ti ti-alert-triangle" style="font-size:20px;"></i> Evet, Kamu Malına Hasar Var
+        </button>
+        <button type="button" class="btn-primary" id="single-public-no-btn" style="margin-top:10px; padding:18px;">
+          Hayır, Sadece Aracıma Hasar Var
+        </button>
+      </div>
+
+      <div data-screen="single_police_redirect" style="display:none;">
+        <button type="button" class="btn-back" data-go="single_public_damage"><i class="ti ti-chevron-left"></i>Geri</button>
+        <div style="text-align:center; margin-bottom:16px;">
+          <i class="ti ti-badge" style="font-size:44px; color:#E03131;"></i>
+        </div>
+        <h2 style="text-align:center; margin-bottom:6px;">Polis Çağırmanız Gerekiyor</h2>
+        <p class="sub" style="text-align:center;">Kamu malına zarar verildiğinde polis tutanağı zorunludur. Lütfen 155'i arayarak olay yerine polis ekibi çağırın.</p>
+
+        <a href="tel:155" style="display:flex; align-items:center; justify-content:center; gap:10px; width:100%; background:#E03131; border:none; color:#fff; border-radius:14px; padding:22px; font-size:20px; font-weight:800; text-decoration:none; margin-bottom:14px;">
+          <i class="ti ti-phone-call" style="font-size:28px;"></i> 155'i Ara (Polis)
+        </a>
+
+        <div class="summary-card" style="margin-bottom:14px;">
+          <div class="step" style="margin-bottom:10px;">
+            <span class="step-num">1</span>
+            <span class="step-text">155'i arayarak olay yerine polis ekibi çağırın.</span>
+          </div>
+          <div class="step" style="margin-bottom:10px;">
+            <span class="step-num">2</span>
+            <span class="step-text">Polis gelene kadar olay yerini terk etmeyin ve aracınızı oynatmayın.</span>
+          </div>
+          <div class="step" style="margin-bottom:10px;">
+            <span class="step-num">3</span>
+            <span class="step-text">Hasarlı kamu malının ve aracınızın fotoğraflarını çekin.</span>
+          </div>
+          <div class="step" style="margin-bottom:0;">
+            <span class="step-num">4</span>
+            <span class="step-text">Polis tutanağı düzenlendikten sonra sigorta sürecine devam edebilirsiniz.</span>
+          </div>
+        </div>
+
+        <div class="info-box blue"><i class="ti ti-info-circle"></i> Polis tutanağı tamamlandıktan sonra uygulama üzerinden hasar bildiriminizi yapabilirsiniz.</div>
+        <button type="button" class="btn-outline" data-go="home">Ana Sayfaya Dön</button>
+      </div>
+
       <div data-screen="fire_kvkk" style="display:none;">
         <button type="button" class="btn-back" data-go="type"><i class="ti ti-chevron-left"></i>Geri</button>
         <div style="text-align:center; margin-bottom:16px;">
@@ -419,13 +474,54 @@
         <button type="button" class="btn-back" data-go="declaration_personal"><i class="ti ti-chevron-left"></i>Geri</button>
         <h2>Kaza Beyanı</h2>
         <p class="sub">Adım 2/5 — Konum Bilgisi</p>
+
         <p class="field-label"><i class="ti ti-map-pin"></i> Kaza Konumu</p>
-        <button type="button" id="decl-loc-btn" class="field-btn">Konumu otomatik al</button>
+        <div id="decl-map-container" style="position:relative; width:100%; height:200px; border-radius:14px; overflow:hidden; margin-bottom:6px; cursor:crosshair; border:1px solid #E5E7EB;">
+          <svg id="decl-map-svg" viewBox="0 0 400 240" width="100%" height="100%" style="background:linear-gradient(135deg,#dce8d4 0%,#c8dbb8 100%);">
+            <!-- Roads -->
+            <rect x="0" y="105" width="400" height="30" fill="#e8e3d8" rx="2"/>
+            <rect x="175" y="0" width="30" height="240" fill="#e8e3d8" rx="2"/>
+            <line x1="190" y1="0" x2="190" y2="240" stroke="#fff" stroke-width="1.5" stroke-dasharray="8,6"/>
+            <line x1="0" y1="120" x2="400" y2="120" stroke="#fff" stroke-width="1.5" stroke-dasharray="8,6"/>
+            <!-- Buildings -->
+            <rect x="20" y="20" width="50" height="40" fill="#b8c8d8" rx="4" opacity="0.6"/>
+            <rect x="90" y="30" width="35" height="30" fill="#c0b8a8" rx="4" opacity="0.6"/>
+            <rect x="220" y="15" width="60" height="45" fill="#b8c8d8" rx="4" opacity="0.6"/>
+            <rect x="310" y="25" width="45" height="35" fill="#c0b8a8" rx="4" opacity="0.6"/>
+            <rect x="25" y="155" width="55" height="40" fill="#b0c0b0" rx="4" opacity="0.6"/>
+            <rect x="100" y="160" width="40" height="35" fill="#c0b8a8" rx="4" opacity="0.6"/>
+            <rect x="220" y="150" width="50" height="45" fill="#b8c8d8" rx="4" opacity="0.6"/>
+            <rect x="300" y="160" width="60" height="38" fill="#b0c0b0" rx="4" opacity="0.6"/>
+            <!-- Trees -->
+            <circle cx="160" cy="50" r="10" fill="#8cb878" opacity="0.5"/>
+            <circle cx="250" cy="200" r="12" fill="#8cb878" opacity="0.5"/>
+            <circle cx="350" cy="80" r="9" fill="#8cb878" opacity="0.5"/>
+            <!-- Pin (hidden by default) -->
+            <g id="decl-map-pin" style="display:none;">
+              <circle id="decl-pin-shadow" cx="0" cy="0" r="8" fill="rgba(227,49,49,0.2)"/>
+              <path id="decl-pin-icon" d="M0,-22 C-6,-22 -11,-17 -11,-11 C-11,-4 0,2 0,2 C0,2 11,-4 11,-11 C11,-17 6,-22 0,-22Z" fill="#E03131" stroke="#fff" stroke-width="1.5"/>
+              <circle id="decl-pin-dot" cx="0" cy="-11" r="3.5" fill="#fff"/>
+            </g>
+          </svg>
+          <div id="decl-map-hint" style="position:absolute; bottom:8px; left:50%; transform:translateX(-50%); background:rgba(22,35,63,0.8); color:#fff; font-size:11px; font-weight:600; padding:5px 12px; border-radius:8px; pointer-events:none;">
+            Haritaya tıklayarak konumu işaretleyin
+          </div>
+        </div>
+        <div id="decl-map-coords" style="display:none; margin-bottom:10px;">
+          <div style="display:flex; align-items:center; gap:6px; background:#E7F7EA; border-radius:10px; padding:8px 12px;">
+            <i class="ti ti-map-pin" style="color:#2F9E44;"></i>
+            <span style="font-size:12px; font-weight:700; color:#2F9E44;" id="decl-coords-text"></span>
+          </div>
+        </div>
+
         <p class="field-label"><i class="ti ti-road"></i> Adres / Yol Tarifi</p>
         <textarea id="decl-address" placeholder="Örn: E-5 Otoyolu, Zincirlikuyu çıkışı, İstanbul yönü"></textarea>
-        <p class="field-label"><i class="ti ti-calendar"></i> Kaza Tarihi / Saati</p>
-        <input class="text-input" id="decl-datetime" readonly>
-        <div class="info-box blue"><i class="ti ti-info-circle"></i> Tarih ve saat otomatik kaydedildi.</div>
+
+        <p class="field-label"><i class="ti ti-calendar"></i> Kaza Tarihi</p>
+        <input type="date" class="text-input" id="decl-date">
+        <p class="field-label"><i class="ti ti-clock"></i> Kaza Saati</p>
+        <input type="time" class="text-input" id="decl-time">
+
         <button type="button" class="btn-primary" data-go="declaration_license">Devam Et</button>
       </div>
 
@@ -1530,6 +1626,15 @@ document.getElementById("breakdown-kvkk-accept-btn").addEventListener("click", f
 });
 
 document.getElementById("single-kvkk-accept-btn").addEventListener("click", function() {
+  state.type = "single";
+  showScreen("single_public_damage");
+});
+
+document.getElementById("single-public-yes-btn").addEventListener("click", function() {
+  showScreen("single_police_redirect");
+});
+
+document.getElementById("single-public-no-btn").addEventListener("click", function() {
   loadGuide("single");
   showScreen("guide");
 });
@@ -1620,17 +1725,30 @@ document.getElementById("tracking-continue-btn").addEventListener("click", funct
 });
 
 // Declaration pipeline event listeners
-document.getElementById("decl-loc-btn").addEventListener("click", function() {
-  var btn = document.getElementById("decl-loc-btn");
-  btn.textContent = "41.02760, 28.97840 — Konum alındı";
-  btn.style.color = "#2F9E44";
-  btn.style.borderStyle = "solid";
-  btn.style.borderColor = "#2F9E44";
+document.getElementById("decl-map-container").addEventListener("click", function(e) {
+  var rect = this.getBoundingClientRect();
+  var x = e.clientX - rect.left;
+  var y = e.clientY - rect.top;
+  var svgX = (x / rect.width) * 400;
+  var svgY = (y / rect.height) * 240;
+  var pin = document.getElementById("decl-map-pin");
+  pin.setAttribute("transform", "translate(" + svgX + "," + svgY + ")");
+  pin.style.display = "block";
+  document.getElementById("decl-map-hint").style.display = "none";
+  var lat = (41.10 - (svgY / 240) * 0.15).toFixed(5);
+  var lng = (28.90 + (svgX / 400) * 0.15).toFixed(5);
+  state.declCoords = { lat: lat, lng: lng };
+  document.getElementById("decl-coords-text").textContent = lat + ", " + lng + " — Konum işaretlendi";
+  document.getElementById("decl-map-coords").style.display = "block";
 });
 
 function showScreenHook(name) {
   if (name === "declaration_location") {
-    document.getElementById("decl-datetime").value = new Date().toLocaleString("tr-TR");
+    var now = new Date();
+    document.getElementById("decl-date").value = now.toISOString().split("T")[0];
+    var hours = String(now.getHours()).padStart(2, "0");
+    var mins = String(now.getMinutes()).padStart(2, "0");
+    document.getElementById("decl-time").value = hours + ":" + mins;
   }
 }
 var origShowScreen = showScreen;
@@ -1687,11 +1805,14 @@ document.getElementById("decl-complete-btn").addEventListener("click", function(
   if (!textarea.value.trim()) {
     textarea.value = "Sağ şeritte seyir halindeyken yağmurlu havada fren mesafesi uzadı ve yol kenarındaki bariyere çarptım. Hızım yaklaşık 60 km/h civarındaydı.";
   }
-  var locBtn = document.getElementById("decl-loc-btn");
-  var locText = locBtn.textContent.indexOf("41.02") > -1 ? "İstanbul, Zincirlikuyu (41.02760, 28.97840)" : "Belirtilmedi";
+  var locText = state.declCoords ? state.declCoords.lat + ", " + state.declCoords.lng : "Belirtilmedi";
+  var addrVal = document.getElementById("decl-address").value;
+  if (addrVal) locText += " — " + addrVal;
   document.getElementById("decl-done-name").textContent = document.getElementById("decl-name").value || "-";
   document.getElementById("decl-done-location").textContent = locText;
-  document.getElementById("decl-done-datetime").textContent = document.getElementById("decl-datetime").value || new Date().toLocaleString("tr-TR");
+  var dateVal = document.getElementById("decl-date").value || "";
+  var timeVal = document.getElementById("decl-time").value || "";
+  document.getElementById("decl-done-datetime").textContent = dateVal + " " + timeVal || new Date().toLocaleString("tr-TR");
   var docCount = 0;
   ["decl-license-front-btn", "decl-license-back-btn", "decl-ruhsat-btn"].forEach(function(id) {
     if (document.getElementById(id).textContent.indexOf("eklendi") > -1) docCount++;
@@ -1702,6 +1823,14 @@ document.getElementById("decl-complete-btn").addEventListener("click", function(
     if (document.getElementById(id).textContent.indexOf("eklendi") > -1) photoCount++;
   });
   document.getElementById("decl-done-photos").textContent = photoCount > 0 ? photoCount + " fotoğraf yüklendi" : "Fotoğraf eklenmedi";
+
+  addClaim({
+    fileNo: "#BYN-" + Math.floor(100000 + Math.random() * 900000),
+    typeLabel: "Kaza Beyanı — Tekli Kaza",
+    status: "Beyan Alındı",
+    stage: 1
+  });
+
   showScreen("declaration_done");
 });
 
