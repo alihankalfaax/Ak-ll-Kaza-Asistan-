@@ -311,6 +311,40 @@
         <button type="button" class="btn-outline" data-go="home">Ana Sayfaya Dön</button>
       </div>
 
+      <div data-screen="collision_kvkk" style="display:none;">
+        <button type="button" class="btn-back" data-go="type"><i class="ti ti-chevron-left"></i>Geri</button>
+        <div style="text-align:center; margin-bottom:16px;">
+          <i class="ti ti-shield-lock" style="font-size:44px; color:#3B5BDB;"></i>
+        </div>
+        <h2 style="text-align:center; margin-bottom:6px;">KVKK ve Hak Bildirgesi</h2>
+        <p class="sub" style="text-align:center;">Devam etmeden önce aşağıdaki maddeleri okuyup onaylayınız.</p>
+
+        <div class="summary-card" style="margin-bottom:14px;">
+          <div class="step" style="margin-bottom:10px;">
+            <span class="step-num">1</span>
+            <span class="step-text">Kişisel verileriniz (konum, fotoğraf, araç bilgisi) 6698 sayılı KVKK kapsamında işlenecektir.</span>
+          </div>
+          <div class="step" style="margin-bottom:10px;">
+            <span class="step-num">2</span>
+            <span class="step-text">Verileriniz yalnızca hasar dosyanızın oluşturulması ve sigorta süreçlerinin yürütülmesi amacıyla kullanılacaktır.</span>
+          </div>
+          <div class="step" style="margin-bottom:10px;">
+            <span class="step-num">3</span>
+            <span class="step-text">Bu kaza birden fazla aracı ilgilendirdiği için, karşı tarafın kendi rızasıyla paylaştığı bilgiler de (QR kod ile) tutanağa dahil edilecektir.</span>
+          </div>
+          <div class="step" style="margin-bottom:10px;">
+            <span class="step-num">4</span>
+            <span class="step-text">Verilerinizin silinmesini, düzeltilmesini veya aktarılmasını talep etme hakkına sahipsiniz.</span>
+          </div>
+          <div class="step" style="margin-bottom:0;">
+            <span class="step-num">5</span>
+            <span class="step-text">Detaylı bilgi için KVKK Aydınlatma Metni'ni inceleyebilirsiniz.</span>
+          </div>
+        </div>
+
+        <button type="button" class="btn-primary" id="collision-kvkk-accept-btn" style="padding:18px; font-size:17px;">Okudum, Onaylıyorum — Devam Et</button>
+      </div>
+
       <div data-screen="single_kvkk" style="display:none;">
         <button type="button" class="btn-back" data-go="type"><i class="ti ti-chevron-left"></i>Geri</button>
         <div style="text-align:center; margin-bottom:16px;">
@@ -673,6 +707,53 @@
         <button type="button" class="btn-primary" id="pdf-continue-btn">Onayla ve Gönder</button>
       </div>
 
+      <div data-screen="counterparty_invite" style="display:none;">
+        <button type="button" class="btn-back" data-go="declaration_done"><i class="ti ti-chevron-left"></i>Geri</button>
+        <h2 style="text-align:center; margin-bottom:6px;">Karşı Tarafı Davet Edin</h2>
+        <p class="sub" style="text-align:center;">Karşı taraf, kendi sigorta şirketinin uygulamasından bu kodu okutarak tutanağa katılabilir — SBM'nin ortak altyapısı sayesinde hangi sigorta şirketinden olursa olsun çalışır.</p>
+
+        <div style="display:flex; justify-content:center; margin:18px 0;">
+          <svg id="qr-code-svg" width="160" height="160" viewBox="0 0 160 160" style="background:#fff; border-radius:12px; padding:8px; border:1px solid #E5E7EB;"></svg>
+        </div>
+
+        <button type="button" class="btn-primary" id="qr-joined-btn" style="display:flex; align-items:center; justify-content:center; gap:8px;">
+          <i class="ti ti-qrcode"></i> QR Kod Okutuldu (Demo)
+        </button>
+
+        <div style="display:flex; align-items:center; gap:10px; margin:16px 0;">
+          <div style="flex:1; height:1px; background:#E5E7EB;"></div>
+          <span style="font-size:11px; color:#9CA3AF;">karşı tarafın uygulaması yoksa</span>
+          <div style="flex:1; height:1px; background:#E5E7EB;"></div>
+        </div>
+
+        <div class="info-box blue" style="margin-bottom:10px;"><i class="ti ti-world"></i> Uygulaması olmayan sürücüler için bir web bağlantısı gönderilebilir; karşı taraf bu linke tarayıcıdan girip bilgilerini uygulama indirmeden paylaşabilir.</div>
+        <button type="button" class="btn-outline" id="web-link-joined-btn" style="display:flex; align-items:center; justify-content:center; gap:8px;">
+          <i class="ti ti-link"></i> Web Linki Gönder (Demo)
+        </button>
+      </div>
+
+      <div data-screen="collision_sketch" style="display:none;">
+        <button type="button" class="btn-back" data-go="report_counterparty"><i class="ti ti-chevron-left"></i>Geri</button>
+        <h2 style="margin-bottom:4px;">Birlikte Kroki Çizin</h2>
+        <p class="sub">Telefonu karşı tarafla paylaşıp, kazanın oluş şeklini birlikte çizin.</p>
+        <div style="background:#fff; border:1.5px dashed #C7CEDD; border-radius:14px; overflow:hidden; margin-bottom:10px;">
+          <canvas id="sketch-canvas" width="300" height="220" style="width:100%; height:220px; touch-action:none; cursor:crosshair; display:block;"></canvas>
+        </div>
+        <button type="button" class="btn-outline" id="sketch-clear-btn" style="margin-bottom:4px;"><i class="ti ti-eraser" style="vertical-align:-2px;"></i> Temizle</button>
+        <button type="button" class="btn-primary" data-go="collision_signature">Krokiyi Tamamla</button>
+      </div>
+
+      <div data-screen="collision_signature" style="display:none;">
+        <button type="button" class="btn-back" data-go="collision_sketch"><i class="ti ti-chevron-left"></i>Geri</button>
+        <h2 id="sign-title" style="margin-bottom:4px;">A Sürücüsü İmzası</h2>
+        <p class="sub" id="sign-sub">Kaza tespit tutanağını onaylamak için imzanızı atın.</p>
+        <div style="background:#fff; border:1.5px dashed #C7CEDD; border-radius:14px; overflow:hidden; margin-bottom:10px;">
+          <canvas id="signature-canvas" width="300" height="140" style="width:100%; height:140px; touch-action:none; cursor:crosshair; display:block;"></canvas>
+        </div>
+        <button type="button" class="btn-outline" id="signature-clear-btn" style="margin-bottom:4px;"><i class="ti ti-eraser" style="vertical-align:-2px;"></i> Temizle</button>
+        <button type="button" class="btn-primary" id="signature-next-btn">İmzalandı — Telefonu Karşı Tarafa Uzatın</button>
+      </div>
+
       <div data-screen="report_counterparty" style="display:none;">
         <button type="button" class="btn-back" data-go="report_note"><i class="ti ti-chevron-left"></i>Geri</button>
         <h2>Karşı Taraf Bilgileri</h2>
@@ -690,7 +771,7 @@
         <p class="field-label">Karşı Tarafın Sürücü Görüşü</p>
         <textarea id="cp-statement" placeholder="Karşı tarafın beyanı..." style="min-height:60px;"></textarea>
         <div class="info-box blue"><i class="ti ti-database"></i> Bilgiler SBM/TRAMER sorgusuyla otomatik dolduruldu (demo).</div>
-        <button type="button" class="btn-primary" data-go="report_preview">Devam Et: Tutanak Önizleme</button>
+        <button type="button" class="btn-primary" data-go="collision_sketch">Devam Et: Kroki Çizimi</button>
       </div>
 
       <div data-screen="report_sent" style="display:none;">
@@ -964,9 +1045,12 @@ var PROGRESS_STEPS = {
   declaration_photos: 6,
   declaration_speech: 7,
   declaration_done: 8,
+  counterparty_invite: 9,
+  report_counterparty: 10,
+  collision_sketch: 11,
+  collision_signature: 12,
   report_photo: 3,
   report_note: 4,
-  report_counterparty: 5,
   report_preview: 6,
   report_pdf: 7,
   breakdown_diagnosis: 3,
@@ -981,15 +1065,17 @@ function progressTotal() {
   if (state.type === "breakdown") return 3;
   if (state.type === "injury") return 4;
   if (state.type === "fire") return 4;
-  if (state.type === "collision") return 7;
+  if (state.type === "collision") return 13;
   if (state.type === "single") return 8;
   return 6;
 }
 function updateProgress(screenName) {
   var wrap = document.getElementById("progress-wrap");
   var current = PROGRESS_STEPS[screenName];
-  if (state.type !== "collision" && screenName === "report_preview") current = 5;
-  if (state.type !== "collision" && screenName === "report_pdf") current = 6;
+  if (state.type === "collision" && screenName === "report_preview") current = 12;
+  if (state.type === "collision" && screenName === "report_pdf") current = 13;
+  if (state.type !== "collision" && state.type !== "single" && screenName === "report_preview") current = 5;
+  if (state.type !== "collision" && state.type !== "single" && screenName === "report_pdf") current = 6;
   if (!current) { wrap.style.display = "none"; return; }
   var total = progressTotal();
   wrap.style.display = "block";
@@ -1010,7 +1096,7 @@ var GUIDES = {
     "Aracınızı güvenli yere çekin, dörtlü flaşörleri yakın.",
     "Yaralı var mı kontrol edin, varsa 112'yi arayın.",
     "Reflektör koyun, tehlike anında dışarı çıkmayın.",
-    "Karşı taraf ile iletişim bilgilerini not alın."
+    "Karşı tarafla iletişim bilgilerini elle not almanıza gerek yok — beyanınızı tamamladıktan sonra karşı tarafı QR kod ile sürece davet edeceksiniz."
   ]},
   single: { title: "Tekli kaza sonrası yapılacaklar", urgent: false, steps: [
     "Aracınızı güvenli bir şekilde yol kenarına çekin ve dörtlü flaşörleri yakın.",
@@ -1057,7 +1143,7 @@ function renderTypeList() {
     var row = document.createElement("button");
     row.type = "button";
     row.className = "type-row" + (t.urgent ? " urgent" : "");
-    var goTarget = t.id === "injury" ? "injury_kvkk" : (t.id === "breakdown" ? "breakdown_kvkk" : (t.id === "fire" ? "fire_kvkk" : (t.id === "single" ? "single_kvkk" : "guide")));
+    var goTarget = t.id === "injury" ? "injury_kvkk" : (t.id === "breakdown" ? "breakdown_kvkk" : (t.id === "fire" ? "fire_kvkk" : (t.id === "single" ? "single_kvkk" : (t.id === "collision" ? "collision_kvkk" : "guide"))));
     row.setAttribute("data-go", goTarget);
     row.setAttribute("data-type", t.id);
     row.innerHTML = '<i class="ti ' + t.icon + '"></i><span>' + t.label + '</span><i class="ti ti-chevron-right"></i>';
@@ -1088,10 +1174,24 @@ function autofillCounterparty() {
 function fillPreviewFields() {
   var typeInfo = TYPES.find(function(t) { return t.id === state.type; });
   document.getElementById("prev-type").value = typeInfo ? typeInfo.label : "-";
-  document.getElementById("prev-datetime").value = new Date().toLocaleString("tr-TR");
-  document.getElementById("prev-location").value = "İstanbul, Zincirlikuyu Kavşağı (41.02760, 28.97840)";
-  document.getElementById("prev-severity").value = state.severity ? state.severity.severity + " - " + state.severity.cost : "Belirtilmedi";
-  document.getElementById("prev-note").value = document.getElementById("note-input").value || NOTE_SAMPLE;
+
+  if (state.type === "collision") {
+    var dateVal = document.getElementById("decl-date").value || "";
+    var timeVal = document.getElementById("decl-time").value || "";
+    document.getElementById("prev-datetime").value = (dateVal + " " + timeVal).trim() || new Date().toLocaleString("tr-TR");
+    var locText = state.declCoords ? state.declCoords.lat + ", " + state.declCoords.lng : "41.02760, 28.97840";
+    var addrVal = document.getElementById("decl-address").value;
+    if (addrVal) locText += " — " + addrVal;
+    document.getElementById("prev-location").value = locText;
+    document.getElementById("prev-severity").value = "Fotoğraflar üzerinden eksper değerlendirmesi yapılacak";
+    document.getElementById("prev-note").value = document.getElementById("decl-speech-text").value || NOTE_SAMPLE;
+  } else {
+    document.getElementById("prev-datetime").value = new Date().toLocaleString("tr-TR");
+    document.getElementById("prev-location").value = "İstanbul, Zincirlikuyu Kavşağı (41.02760, 28.97840)";
+    document.getElementById("prev-severity").value = state.severity ? state.severity.severity + " - " + state.severity.cost : "Belirtilmedi";
+    document.getElementById("prev-note").value = document.getElementById("note-input").value || NOTE_SAMPLE;
+  }
+
   var cpBlock = document.getElementById("prev-counterparty-block");
   if (state.type === "collision") {
     cpBlock.style.display = "block";
@@ -1143,6 +1243,9 @@ function loadGuide(typeId) {
   } else if (typeId === "single") {
     btn.textContent = "Devam Et: Kaza Beyanı";
     btn.onclick = function() { showScreen("declaration_personal"); };
+  } else if (typeId === "collision") {
+    btn.textContent = "Devam Et: Kaza Beyanı";
+    btn.onclick = function() { showScreen("declaration_personal"); };
   } else {
     btn.textContent = "Devam Et: Hasar Tespiti";
     btn.onclick = function() { showScreen("report_photo"); };
@@ -1155,7 +1258,7 @@ document.querySelectorAll("[data-go]").forEach(function(btn) {
     var typeId = e.currentTarget.getAttribute("data-type");
     if (typeId) {
       state.type = typeId;
-      if (typeId !== "injury" && typeId !== "breakdown" && typeId !== "fire" && typeId !== "single") loadGuide(typeId);
+      if (typeId !== "injury" && typeId !== "breakdown" && typeId !== "fire" && typeId !== "single" && typeId !== "collision") loadGuide(typeId);
     }
     if (target === "home" && e.currentTarget.closest("[data-screen='login']")) {
       document.getElementById("home-login-card").style.display = "none";
@@ -1835,7 +1938,94 @@ document.getElementById("decl-complete-btn").addEventListener("click", function(
 });
 
 document.getElementById("decl-to-damage-btn").addEventListener("click", function() {
-  showScreen("report_photo");
+  if (state.type === "collision") {
+    drawFakeQR();
+    showScreen("counterparty_invite");
+  } else {
+    showScreen("report_photo");
+  }
+});
+
+document.getElementById("collision-kvkk-accept-btn").addEventListener("click", function() {
+  loadGuide("collision");
+  showScreen("guide");
+});
+
+function drawFakeQR() {
+  var svg = document.getElementById("qr-code-svg");
+  var cell = 8, cols = 17;
+  var html = '<rect width="160" height="160" fill="#fff"/>';
+  var seed = 42;
+  function rand() { seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }
+  for (var r = 0; r < cols; r++) {
+    for (var c = 0; c < cols; c++) {
+      var isFinder = (r < 4 && c < 4) || (r < 4 && c > cols - 5) || (r > cols - 5 && c < 4);
+      var on = isFinder ? ((r % 3 !== 1 && c % 3 !== 1)) : rand() > 0.55;
+      if (on) html += '<rect x="' + (c * cell + 4) + '" y="' + (r * cell + 4) + '" width="' + cell + '" height="' + cell + '" fill="#16233F"/>';
+    }
+  }
+  svg.innerHTML = html;
+}
+
+function goToCounterpartyConfirm() {
+  autofillCounterparty();
+  showScreen("report_counterparty");
+}
+
+document.getElementById("qr-joined-btn").addEventListener("click", goToCounterpartyConfirm);
+document.getElementById("web-link-joined-btn").addEventListener("click", function() {
+  var btn = document.getElementById("web-link-joined-btn");
+  btn.textContent = "Link gönderildi, karşı taraf dolduruyor...";
+  setTimeout(goToCounterpartyConfirm, 900);
+});
+
+function setupCanvasDrawing(canvasId) {
+  var canvas = document.getElementById(canvasId);
+  var ctx = canvas.getContext("2d");
+  var drawing = false;
+  ctx.strokeStyle = "#16233F";
+  ctx.lineWidth = 2;
+  ctx.lineCap = "round";
+  function getPos(e) {
+    var rect = canvas.getBoundingClientRect();
+    var scaleX = canvas.width / rect.width;
+    var scaleY = canvas.height / rect.height;
+    var clientX = e.touches ? e.touches[0].clientX : e.clientX;
+    var clientY = e.touches ? e.touches[0].clientY : e.clientY;
+    return { x: (clientX - rect.left) * scaleX, y: (clientY - rect.top) * scaleY };
+  }
+  function start(e) { drawing = true; var p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y); e.preventDefault(); }
+  function move(e) { if (!drawing) return; var p = getPos(e); ctx.lineTo(p.x, p.y); ctx.stroke(); e.preventDefault(); }
+  function end() { drawing = false; }
+  canvas.addEventListener("mousedown", start);
+  canvas.addEventListener("mousemove", move);
+  window.addEventListener("mouseup", end);
+  canvas.addEventListener("touchstart", start);
+  canvas.addEventListener("touchmove", move);
+  canvas.addEventListener("touchend", end);
+  return ctx;
+}
+
+var sketchCtx = setupCanvasDrawing("sketch-canvas");
+document.getElementById("sketch-clear-btn").addEventListener("click", function() {
+  sketchCtx.clearRect(0, 0, 300, 220);
+});
+
+var signatureCtx = setupCanvasDrawing("signature-canvas");
+document.getElementById("signature-clear-btn").addEventListener("click", function() {
+  signatureCtx.clearRect(0, 0, 300, 140);
+});
+
+document.getElementById("signature-next-btn").addEventListener("click", function() {
+  var btn = document.getElementById("signature-next-btn");
+  if (btn.textContent.indexOf("Karşı Tarafa") > -1) {
+    signatureCtx.clearRect(0, 0, 300, 140);
+    document.getElementById("sign-title").textContent = "B Sürücüsü İmzası";
+    document.getElementById("sign-sub").textContent = "Karşı taraf da tutanağı onaylamak için imza atsın.";
+    btn.textContent = "Gönder";
+  } else {
+    showScreen("report_preview");
+  }
 });
 
 </script>
