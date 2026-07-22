@@ -125,14 +125,19 @@
   .timeline-labels { display: flex; justify-content: space-between; margin-top: 6px; }
   .timeline-labels span { font-size: 10px; color: #6B7280; width: 60px; text-align: center; }
 
-  .bottom-nav {
-    background: #16233F; padding: 8px 6px 16px; display: flex; justify-content: space-around; align-items: center;
-    margin-top: auto; flex-shrink: 0;
-    border-radius: 22px 22px 0 0;
+  .bottom-nav-wrap {
+    margin-top: auto; flex-shrink: 0; padding: 6px 12px 8px;
+    background: #f2f4f8;
   }
-  .nav-item { display: flex; flex-direction: column; align-items: center; gap: 3px; color: #7B8AB8; font-size: 10px; font-weight: 600; padding: 6px 10px; transition: color 0.2s; }
-  .nav-item i { font-size: 20px; }
-  .nav-item.active { color: #fff; background: #3B5BDB; padding: 8px 16px; border-radius: 16px; box-shadow: 0 2px 10px rgba(59,91,219,0.3); }
+  .bottom-nav {
+    background: #111e3c; padding: 8px 6px; display: flex; justify-content: space-evenly; align-items: center;
+    border-radius: 24px;
+  }
+  .nav-item { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px; color: #7a88ad; font-size: 10px; font-weight: 700; padding: 10px 8px; cursor: pointer; min-width: 50px; }
+  .nav-item i { font-size: 22px; }
+  .nav-item.active {
+    color: #fff; background: #2b4888; padding: 10px 14px; border-radius: 16px;
+  }
 
   .btn-back {
     background: none; border: none; color: #3B5BDB; font-size: 14px; font-weight: 700;
@@ -262,9 +267,11 @@
         </div>
         <div style="padding:20px;">
           <h3 style="font-size:16px; font-weight:800; margin-bottom:14px;">Acil Durum İşlemleri</h3>
-          <button type="button" class="btn-primary btn-danger" data-go="type" style="display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:20px; padding:18px; font-size:17px; border-radius:16px; box-shadow: 0 4px 14px rgba(224,49,49,0.25);">
-            <i class="ti ti-alert-triangle" style="font-size:24px;"></i> Acil Durum ve Hasar Rehberi
-          </button>
+          <div style="background: radial-gradient(ellipse at center, rgba(224,49,49,0.25) 0%, rgba(224,49,49,0.12) 40%, rgba(224,49,49,0.04) 60%, transparent 75%); border-radius:30px; padding:20px 10px; margin-bottom:12px;">
+            <button type="button" class="btn-primary btn-danger" data-go="type" style="display:flex; align-items:center; justify-content:center; gap:10px; padding:18px; font-size:17px; border-radius:16px; box-shadow: 0 4px 14px rgba(224,49,49,0.25);">
+              <i class="ti ti-alert-triangle" style="font-size:24px;"></i> Acil Durum ve Hasar Rehberi
+            </button>
+          </div>
 
           <h3 style="font-size:16px; font-weight:800; margin-bottom:14px;">Hızlı İşlemler</h3>
           <div class="quick-row">
@@ -1113,12 +1120,14 @@
       </div>
 
     </div>
-    <div class="bottom-nav">
-      <div class="nav-item active"><i class="ti ti-home"></i>Ana Sayfa</div>
-      <div class="nav-item"><i class="ti ti-heart-rate-monitor"></i>Sağlık</div>
-      <div class="nav-item"><i class="ti ti-car"></i>Araç</div>
-      <div class="nav-item"><i class="ti ti-building-estate"></i>Konut</div>
-      <div class="nav-item"><i class="ti ti-dots-circle-horizontal"></i>Diğer</div>
+    <div class="bottom-nav-wrap" id="bottom-nav-wrap" style="display:none;">
+      <div class="bottom-nav">
+        <div class="nav-item active"><i class="ti ti-cloud"></i>Ana Sayfa</div>
+        <div class="nav-item"><i class="ti ti-hearts"></i>Sağlık</div>
+        <div class="nav-item"><i class="ti ti-bus"></i>Araç</div>
+        <div class="nav-item"><i class="ti ti-building-skyscraper"></i>Konut</div>
+        <div class="nav-item"><i class="ti ti-message-dots"></i>Diğer</div>
+      </div>
     </div>
   </div>
 </div>
@@ -1356,6 +1365,7 @@ document.querySelectorAll("[data-go]").forEach(function(btn) {
     }
     if (target === "home" && e.currentTarget.closest("[data-screen='login']")) {
       document.getElementById("home-login-card").style.display = "none";
+      document.getElementById("bottom-nav-wrap").style.display = "block";
     }
     showScreen(target);
   });
