@@ -16,7 +16,7 @@
   .caption { position: fixed; top: 14px; left: 50%; transform: translateX(-50%); font-size: 13px; color: #6B7280; }
   .phone { width: 360px; border: 1px solid #C7CEDD; border-radius: 36px; padding: 12px; background: #0F1830; }
   .notch { width: 60px; height: 5px; border-radius: 3px; background: rgba(255,255,255,0.25); margin: 0 auto 8px; }
-  .screen { border-radius: 26px; overflow: hidden; background: #EEF1F9; height: 680px; max-height: 680px; display: flex; flex-direction: column; }
+  .screen { border-radius: 26px; overflow: hidden; background: #f2f4f8; height: 680px; max-height: 680px; display: flex; flex-direction: column; }
   .content { flex: 1; overflow-y: auto; padding: 18px 18px 8px; }
   h1 { font-size: 24px; font-weight: 800; color: #16233F; margin: 0; }
   h2 { font-size: 18px; font-weight: 800; color: #16233F; margin: 0 0 4px; }
@@ -27,61 +27,81 @@
   button { font-family: inherit; cursor: pointer; }
 
   .home-header {
-    background: linear-gradient(160deg, #E7ECFB 0%, #AEC1EF 100%);
-    padding: 20px 18px 26px;
+    background: linear-gradient(180deg, #dce8fb 0%, #c4d8f7 40%, #e8eef8 80%, #EEF1F9 100%);
+    padding: 22px 20px 28px;
+    position: relative;
   }
-  .top-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
+  .top-row { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
   .avatar {
-    width: 42px; height: 42px; border-radius: 50%; background: #fff;
-    display: flex; align-items: center; justify-content: center; color: #16233F; font-size: 20px;
+    width: 46px; height: 46px; border-radius: 50%; background: #fff;
+    display: flex; align-items: center; justify-content: center; color: #7B8AB0; font-size: 22px;
+    box-shadow: 0 2px 8px rgba(59,91,219,0.10);
+    border: 2px solid #E5EAF5;
   }
-  .bell { color: #16233F; font-size: 22px; }
+  .bell-wrap {
+    width: 40px; height: 40px; border-radius: 50%; background: rgba(255,255,255,0.0);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .bell { color: #16233F; font-size: 22px; opacity: 0.65; }
   .login-card {
-    background: rgba(255,255,255,0.55); border-radius: 16px; padding: 16px;
-    display: flex; justify-content: space-between; align-items: center; margin-top: 14px;
+    background: rgba(255,255,255,0.65); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border-radius: 16px; padding: 16px 18px;
+    display: flex; justify-content: space-between; align-items: center; margin-top: 16px;
+    border: 1px solid rgba(255,255,255,0.5);
+    box-shadow: 0 2px 12px rgba(59,91,219,0.06);
   }
-  .login-card p { font-size: 13px; color: #26324A; line-height: 1.4; }
-  .login-card a { color: #3B5BDB; font-weight: 700; font-size: 14px; text-decoration: none; white-space: nowrap; margin-left: 10px; }
+  .login-card p { font-size: 13px; color: #3B4C73; line-height: 1.45; }
+  .login-card a { color: #3B5BDB; font-weight: 700; font-size: 14px; text-decoration: none; white-space: nowrap; margin-left: 12px; display: flex; align-items: center; gap: 4px; }
 
-  .quick-row { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 4px; margin-bottom: 4px; }
+  .quick-row { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 6px; margin-bottom: 4px; scrollbar-width: none; -ms-overflow-style: none; }
+  .quick-row::-webkit-scrollbar { display: none; }
   .quick-card {
-    min-width: 130px; background: #fff; border-radius: 16px; padding: 14px; flex-shrink: 0;
-    border: none; text-align: left;
+    min-width: 130px; background: #fff; border-radius: 18px; padding: 16px 14px; flex-shrink: 0;
+    border: 1px solid #F0F2F8; text-align: left;
+    box-shadow: 0 2px 10px rgba(22,35,63,0.04);
+    transition: transform 0.15s, box-shadow 0.15s;
   }
-  .quick-card i.main-icon { font-size: 24px; color: #3B5BDB; margin-bottom: 22px; display: block; }
+  .quick-card:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(22,35,63,0.08); }
+  .quick-card i.main-icon { font-size: 26px; color: #3B5BDB; margin-bottom: 24px; display: block; }
   .quick-card.hero { background: #fff; border: 1.5px solid #FBD3D3; position: relative; }
   .quick-card.hero i.main-icon { color: #E03131; }
   .quick-card.hero .badge-new {
     position: absolute; top: 10px; right: 10px; background: #E03131; color: #fff;
     font-size: 9px; font-weight: 800; padding: 2px 6px; border-radius: 6px;
   }
-  .quick-card span { font-size: 13px; font-weight: 700; color: #16233F; line-height: 1.3; display: block; }
+  .quick-card span { font-size: 13px; font-weight: 700; color: #16233F; line-height: 1.35; display: block; }
 
-  .section-title-row { display: flex; justify-content: space-between; align-items: center; margin: 20px 0 10px; }
+  .section-title-row { display: flex; justify-content: space-between; align-items: center; margin: 22px 0 12px; }
   .section-title-row a { font-size: 13px; color: #3B5BDB; font-weight: 700; text-decoration: none; }
 
   .product-card {
-    min-width: 190px; background: #fff; border-radius: 16px; overflow: hidden; flex-shrink: 0;
-    display: flex; align-items: stretch; height: 150px;
+    min-width: 160px; flex: 1; background: #fff; border-radius: 18px; overflow: hidden; flex-shrink: 0;
+    display: flex; flex-direction: column; border: 1px solid #F0F2F8;
+    box-shadow: 0 2px 10px rgba(22,35,63,0.04);
+    transition: transform 0.15s, box-shadow 0.15s;
   }
-  .product-text { padding: 14px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+  .product-card:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(22,35,63,0.08); }
+  .product-text { padding: 16px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
   .badge-lilac {
-    background: #EDE7FB; color: #6741D9; font-size: 10px; font-weight: 800; padding: 3px 8px;
+    background: #EDE7FB; color: #6741D9; font-size: 10px; font-weight: 800; padding: 4px 10px;
     border-radius: 8px; display: inline-block; width: fit-content;
   }
-  .product-title { font-size: 13px; font-weight: 800; color: #16233F; line-height: 1.3; flex: 1; }
-  .product-text a { font-size: 12px; color: #3B5BDB; font-weight: 700; text-decoration: none; }
+  .product-title { font-size: 13px; font-weight: 800; color: #16233F; line-height: 1.35; flex: 1; }
+  .product-text a { font-size: 12px; color: #3B5BDB; font-weight: 700; text-decoration: none; display: flex; align-items: center; gap: 4px; }
   .product-visual {
-    width: 70px; background: linear-gradient(160deg, #FFD9A0 0%, #F7B267 100%);
-    display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.85); font-size: 26px;
+    display: none;
   }
-  .product-visual.alt { background: linear-gradient(160deg, #A9D8C6 0%, #6FBBA0 100%); }
 
   .campaign-card {
-    min-width: 220px; height: 90px; border-radius: 14px; flex-shrink: 0;
-    background: linear-gradient(135deg, #16233F 0%, #3B5BDB 100%);
+    min-width: 200px; height: 100px; border-radius: 16px; flex-shrink: 0;
+    background: linear-gradient(135deg, #16233F 0%, #2a3f6e 60%, #3B5BDB 100%);
+    position: relative; overflow: hidden;
   }
-  .campaign-card.alt { background: linear-gradient(135deg, #3B5BDB 0%, #8AA2F0 100%); }
+  .campaign-card::after {
+    content: ''; position: absolute; top: -20px; right: -20px; width: 80px; height: 80px;
+    border-radius: 50%; background: rgba(255,255,255,0.06);
+  }
+  .campaign-card.alt { background: linear-gradient(135deg, #3B5BDB 0%, #6B8AF0 60%, #8AA2F0 100%); }
 
   .claim-row {
     background: #fff; border-radius: 14px; padding: 12px 14px; margin-bottom: 8px;
@@ -106,11 +126,13 @@
   .timeline-labels span { font-size: 10px; color: #6B7280; width: 60px; text-align: center; }
 
   .bottom-nav {
-    background: #16233F; padding: 10px 8px 14px; display: flex; justify-content: space-around; margin-top: auto; flex-shrink: 0;
+    background: #16233F; padding: 8px 6px 16px; display: flex; justify-content: space-around; align-items: center;
+    margin-top: auto; flex-shrink: 0;
+    border-radius: 22px 22px 0 0;
   }
-  .nav-item { display: flex; flex-direction: column; align-items: center; gap: 3px; color: #AEB8D4; font-size: 10px; font-weight: 600; }
+  .nav-item { display: flex; flex-direction: column; align-items: center; gap: 3px; color: #7B8AB8; font-size: 10px; font-weight: 600; padding: 6px 10px; transition: color 0.2s; }
   .nav-item i { font-size: 20px; }
-  .nav-item.active { color: #fff; background: #3B5BDB; padding: 6px 14px; border-radius: 14px; margin-top: -6px; }
+  .nav-item.active { color: #fff; background: #3B5BDB; padding: 8px 16px; border-radius: 16px; box-shadow: 0 2px 10px rgba(59,91,219,0.3); }
 
   .btn-back {
     background: none; border: none; color: #3B5BDB; font-size: 14px; font-weight: 700;
@@ -229,21 +251,22 @@
       <div data-screen="home" style="margin:-18px -18px 0; display:none;">
         <div class="home-header">
           <div class="top-row">
-            <i class="ti ti-bell bell"></i>
+            <div class="avatar"><i class="ti ti-user"></i></div>
+            <div class="bell-wrap"><i class="ti ti-bell bell"></i></div>
           </div>
-          <h1>Hoş Geldiniz</h1>
+          <h1 style="font-size:26px; font-weight:700; letter-spacing:-0.3px;">Hoş geldiniz</h1>
           <div class="login-card" id="home-login-card">
             <p>Anadolu Sigorta ayrıcalıklarından yararlanmak için giriş yapın.</p>
-            <a href="#">Giriş Yap →</a>
+            <a href="#">Giriş Yap <i class="ti ti-arrow-right" style="font-size:16px;"></i></a>
           </div>
         </div>
-        <div style="padding:18px;">
-          <h3>Acil Durum İşlemleri</h3>
-          <button type="button" class="btn-primary btn-danger" data-go="type" style="display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:16px; padding:18px; font-size:17px;">
+        <div style="padding:20px;">
+          <h3 style="font-size:16px; font-weight:800; margin-bottom:14px;">Acil Durum İşlemleri</h3>
+          <button type="button" class="btn-primary btn-danger" data-go="type" style="display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:20px; padding:18px; font-size:17px; border-radius:16px; box-shadow: 0 4px 14px rgba(224,49,49,0.25);">
             <i class="ti ti-alert-triangle" style="font-size:24px;"></i> Acil Durum ve Hasar Rehberi
           </button>
 
-          <h3>Hızlı İşlemler</h3>
+          <h3 style="font-size:16px; font-weight:800; margin-bottom:14px;">Hızlı İşlemler</h3>
           <div class="quick-row">
             <div class="quick-card">
               <i class="ti ti-tool main-icon"></i>
@@ -264,27 +287,25 @@
             <div id="claims-list" style="margin-bottom:6px;"></div>
           </div>
 
-          <div class="section-title-row"><h3 style="margin:0;">Sigorta Ürünleri</h3><a href="#">Tümü</a></div>
-          <div class="quick-row">
+          <div class="section-title-row"><h3 style="margin:0; font-size:16px;">Sigorta Ürünleri</h3><a href="#">Tümü</a></div>
+          <div style="display:flex; gap:10px; margin-bottom:4px;">
             <div class="product-card">
               <div class="product-text">
                 <span class="badge-lilac">Sağlık</span>
                 <span class="product-title">Tamamlayıcı Sağlık Sigortası</span>
-                <a href="#">Satın Al →</a>
+                <a href="#">Satın Al <i class="ti ti-arrow-right" style="font-size:14px;"></i></a>
               </div>
-              <div class="product-visual"><i class="ti ti-users"></i></div>
             </div>
             <div class="product-card">
               <div class="product-text">
                 <span class="badge-lilac">Sağlık</span>
                 <span class="product-title">Özel Sağlık Sigortası</span>
-                <a href="#">Teklif Al →</a>
+                <a href="#">Teklif Al <i class="ti ti-arrow-right" style="font-size:14px;"></i></a>
               </div>
-              <div class="product-visual alt"><i class="ti ti-user"></i></div>
             </div>
           </div>
 
-          <div class="section-title-row"><h3 style="margin:0;">Kampanyalar</h3></div>
+          <div class="section-title-row"><h3 style="margin:0; font-size:16px;">Kampanyalar</h3></div>
           <div class="quick-row">
             <div class="campaign-card"></div>
             <div class="campaign-card alt"></div>
