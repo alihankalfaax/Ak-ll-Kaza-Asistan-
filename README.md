@@ -30,7 +30,7 @@ Anadolu Sigorta mobil uygulaması için tasarlanan **Akıllı Kaza Asistanı** k
 ### Diğer Özellikler
 - **AI Hasar Tespiti** — Fotoğraftan ön hasar tahmini ve maliyet analizi
 - **Otomatik Kaza Tutanağı** — PDF oluşturma ve indirme
-- **QR Kod ile Karşı Taraf Entegrasyonu** — SBM/TRAMER altyapısı üzerinden
+- **QR Kod ile Karşı Taraf Entegrasyonu**
 - **Kroki Çizimi** — Dokunmatik canvas üzerinde kaza krokisi
 - **Dijital İmza** — Her iki sürücü için imza alanı
 - **KVKK Uyumu** — Her akış öncesi aydınlatma ve onay
