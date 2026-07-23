@@ -8,6 +8,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
 <style>
+  /* ===== GENEL STİLLER ===== */
   * { box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; }
   body {
     margin: 0; min-height: 100vh; background: #DCE2EE;
@@ -26,6 +27,7 @@
   .sub { font-size: 13px; color: #6B7280; line-height: 1.5; margin-bottom: 16px; }
   button { font-family: inherit; cursor: pointer; }
 
+  /* ===== ANA SAYFA HEADER & GİRİŞ KARTI ===== */
   .home-header {
     background: linear-gradient(180deg, #dce8fb 0%, #c4d8f7 40%, #e8eef8 80%, #EEF1F9 100%);
     padding: 22px 20px 28px;
@@ -53,6 +55,7 @@
   .login-card p { font-size: 13px; color: #3B4C73; line-height: 1.45; }
   .login-card a { color: #3B5BDB; font-weight: 700; font-size: 14px; text-decoration: none; white-space: nowrap; margin-left: 12px; display: flex; align-items: center; gap: 4px; }
 
+  /* ===== HIZLI İŞLEMLER KARTLARI ===== */
   .quick-row { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 6px; margin-bottom: 4px; scrollbar-width: none; -ms-overflow-style: none; }
   .quick-row::-webkit-scrollbar { display: none; }
   .quick-card {
@@ -71,6 +74,7 @@
   }
   .quick-card span { font-size: 13px; font-weight: 700; color: #16233F; line-height: 1.35; display: block; }
 
+  /* ===== SİGORTA ÜRÜNLERİ & KAMPANYALAR ===== */
   .section-title-row { display: flex; justify-content: space-between; align-items: center; margin: 22px 0 12px; }
   .section-title-row a { font-size: 13px; color: #3B5BDB; font-weight: 700; text-decoration: none; }
 
@@ -100,6 +104,7 @@
   }
   .campaign-card.alt { background: linear-gradient(135deg, #3B5BDB 0%, #6B8AF0 60%, #8AA2F0 100%); }
 
+  /* ===== HASAR DOSYASI TAKİP & TIMELINE ===== */
   .claim-row {
     background: #fff; border-radius: 14px; padding: 12px 14px; margin-bottom: 8px;
     width: 100%; text-align: left; border: none; display: block;
@@ -122,6 +127,7 @@
   .timeline-labels { display: flex; justify-content: space-between; margin-top: 6px; }
   .timeline-labels span { font-size: 10px; color: #6B7280; width: 60px; text-align: center; }
 
+  /* ===== FLOATING BOTTOM NAVİGASYON ===== */
   .bottom-nav-wrap {
     margin-top: auto; flex-shrink: 0; padding: 6px 12px 8px;
     background: #f2f4f8;
@@ -136,6 +142,7 @@
     color: #fff; background: #2b4888; padding: 10px 14px; border-radius: 16px;
   }
 
+  /* ===== BUTONLAR & FORM ELEMANLARI ===== */
   .btn-back {
     background: none; border: none; color: #3B5BDB; font-size: 14px; font-weight: 700;
     padding: 0; margin-bottom: 14px; display: flex; align-items: center; gap: 4px;
@@ -179,6 +186,7 @@
   }
   textarea { min-height: 70px; resize: vertical; }
 
+  /* ===== AI HASAR TAHMİNİ & BİLGİ KUTULARI ===== */
   .ai-card { display: none; background: #E9EEFC; border-radius: 14px; padding: 13px; margin-bottom: 12px; }
   .ai-card p.ai-title { font-size: 12px; font-weight: 700; color: #3B5BDB; margin-bottom: 6px; display: flex; align-items: center; gap: 4px; }
   .ai-card .ai-body { font-size: 12.5px; color: #26324A; line-height: 1.7; }
@@ -199,6 +207,7 @@
 
   .diagnosis-icon { width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; margin-bottom: 12px; }
 
+  /* ===== YOL YARDIM TAKİP ANİMASYONU ===== */
   .radar-ring {
     position: absolute; width: 52px; height: 52px; border-radius: 50%;
     border: 2px solid #3B5BDB; opacity: 0; animation: radar-pulse 1.8s ease-out infinite;
@@ -224,6 +233,7 @@
         </div>
       </div>
 
+      <!-- ===== GİRİŞ EKRANI ===== -->
       <div data-screen="login" style="margin:-18px -18px 0;">
         <div class="home-header" style="min-height:660px; display:flex; flex-direction:column; padding:20px 18px 26px;">
           <div style="flex:1; display:flex; flex-direction:column; justify-content:center; margin-top:-60px;">
@@ -246,6 +256,7 @@
         </div>
       </div>
 
+      <!-- ===== ANA SAYFA ===== -->
       <div data-screen="home" style="margin:-18px -18px 0; display:none;">
         <div class="home-header">
           <div class="top-row">
@@ -313,6 +324,7 @@
         </div>
       </div>
 
+      <!-- ===== OLAY TÜRÜ SEÇİMİ ===== -->
       <div data-screen="type" style="display:none;">
         <button type="button" class="btn-back" data-go="home"><i class="ti ti-chevron-left"></i>Geri</button>
         <h2>Ne tür bir olay yaşadınız?</h2>
@@ -320,6 +332,7 @@
         <div id="type-list"></div>
       </div>
 
+      <!-- ===== ACİL DURUM REHBERİ ===== -->
       <div data-screen="guide" style="display:none;">
         <button type="button" class="btn-back" data-go="type"><i class="ti ti-chevron-left"></i>Geri</button>
         <div id="urgent-banner" style="display:none;">
@@ -333,6 +346,7 @@
         <button type="button" class="btn-outline" data-go="home">Ana Sayfaya Dön</button>
       </div>
 
+      <!-- ===== KVKK ONAY EKRANLARI (çarpışma/tekli/arıza/yangın/yaralanma) ===== -->
       <div data-screen="collision_kvkk" style="display:none;">
         <button type="button" class="btn-back" data-go="type"><i class="ti ti-chevron-left"></i>Geri</button>
         <div style="text-align:center; margin-bottom:16px;">
@@ -510,6 +524,7 @@
         <button type="button" class="btn-primary" data-go="home" style="margin-top:10px;">Ana Sayfaya Dön</button>
       </div>
 
+      <!-- ===== KAZA BEYANI (5 adım: kişisel, konum, ehliyet, fotoğraf, anlatım) ===== -->
       <div data-screen="declaration_personal" style="display:none;">
         <button type="button" class="btn-back" data-go="guide"><i class="ti ti-chevron-left"></i>Geri</button>
         <h2>Kaza Beyanı</h2>
@@ -662,6 +677,7 @@
         <button type="button" class="btn-outline" data-go="home">Ana Sayfaya Dön</button>
       </div>
 
+      <!-- ===== QR KOD PAYLAŞIM & KARŞI TARAF DAVETİ ===== -->
       <div data-screen="collision_qr" style="display:none;">
         <button type="button" class="btn-back" data-go="guide"><i class="ti ti-chevron-left"></i>Geri</button>
         <h2>Karşı Tarafa QR Paylaş</h2>
@@ -731,6 +747,7 @@
         <button type="button" class="btn-primary" id="collision-qr-continue-btn">Devam Et: Kaza Tutanağı</button>
       </div>
 
+      <!-- ===== HASAR TESPİTİ & TUTANAK OLUŞTURMA ===== -->
       <div data-screen="report_photo" style="display:none;">
         <button type="button" class="btn-back" data-go="guide"><i class="ti ti-chevron-left"></i>Geri</button>
         <h2>Hasar Tespiti</h2>
@@ -1126,8 +1143,10 @@
 </div>
 
 <script>
+// ===== UYGULAMA STATE & SABİTLER =====
 var state = { type: null, severity: null, counterpartyStatus: null, claims: [] };
 
+// Her ekranın adım numarası (progress bar için)
 var PROGRESS_STEPS = {
   type: 1,
   guide: 2,
@@ -1179,6 +1198,7 @@ function updateProgress(screenName) {
   document.getElementById("progress-fill").style.width = Math.round((current / total) * 100) + "%";
 }
 
+// Olay türleri (çarpışma, tekli kaza, arıza, yangın, yaralanma)
 var TYPES = [
   { id: "collision", label: "Çarpışma (başka araçla)", icon: "ti-car", urgent: false },
   { id: "single", label: "Tekli kaza (bariyer/ağaç)", icon: "ti-tree", urgent: false },
@@ -1187,6 +1207,7 @@ var TYPES = [
   { id: "injury", label: "Yaralanma var", icon: "ti-first-aid-kit", urgent: true }
 ];
 
+// Her olay türü için acil durum rehber adımları
 var GUIDES = {
   collision: { title: "Çarpışma sonrası yapılacaklar", urgent: true, steps: [
     "Aracınızı güvenli yere çekin, dörtlü flaşörleri yakın.",
@@ -1219,12 +1240,14 @@ var GUIDES = {
   ]}
 };
 
+// AI hasar tahmin sonuçları (demo verisi)
 var AI_RESULTS = [
   { severity: "Hafif", detail: "Yüzeysel çizik tespit edildi. Tahmini onarım: 1-2 gün.", cost: "2.500 - 4.000 TL" },
   { severity: "Orta", detail: "Tampon deformasyonu olası. Tahmini onarım: 3-5 gün.", cost: "6.000 - 12.000 TL" },
   { severity: "Ağır", detail: "Yapısal hasar şüphesi. Ekspertiz önerilir.", cost: "15.000 TL ve üzeri" }
 ];
 
+// Arıza teşhis senaryoları (motor, akü, sıcaklık, yakıt)
 var DIAGNOSES = [
   { icon: "ti-engine", color: "#E03131", bg: "#FDECEC", title: "Motor Arıza Lambası", detail: "Motor kontrol lambası yanıyor. Aracı çalıştırmaya devam etmek risklidir.", action: "cekici", tips: ["Motoru kapatın ve tekrar çalıştırmayın.", "Çekici ile en yakın yetkili servise götürün.", "Araç sigortanızın kapsamını kontrol edin."] },
   { icon: "ti-battery-2", color: "#F08C00", bg: "#FFF3E0", title: "Akü / Şarj Uyarısı", detail: "Akü şarj sistemi sorunlu olabilir.", action: "yolyardim", tips: ["Gereksiz elektrikli cihazları kapatın.", "Yol yardım ekibinden takviye veya akü değişimi isteyin."] },
@@ -1232,6 +1255,7 @@ var DIAGNOSES = [
   { icon: "ti-gas-station", color: "#3B5BDB", bg: "#E9EEFC", title: "Yakıt Seviyesi Düşük", detail: "Yakıt seviyeniz kritik seviyede.", action: "istasyon", tips: ["Klima ve gereksiz elektriği kapatarak yakıt tasarrufu yapın.", "En yakın istasyona düşük devirde seyredin."] }
 ];
 
+// ===== EKRAN YÖNETİMİ & NAVİGASYON =====
 function renderTypeList() {
   var listEl = document.getElementById("type-list");
   listEl.innerHTML = "";
@@ -1248,6 +1272,7 @@ function renderTypeList() {
 }
 renderTypeList();
 
+// ===== KARŞI TARAF BİLGİLERİ (demo verisi) =====
 var COUNTERPARTY_SAMPLE = {
   plate: "34 XYZ 456",
   name: "Ahmet Yılmaz",
@@ -1300,6 +1325,7 @@ function fillPreviewFields() {
   }
 }
 
+// Ekranlar arası geçiş — data-screen attribute ile eşleştirir
 function showScreen(name) {
   document.querySelectorAll("[data-screen]").forEach(function(el) {
     el.style.display = el.getAttribute("data-screen") === name ? "block" : "none";
@@ -1408,6 +1434,8 @@ document.getElementById("preview-continue-btn").addEventListener("click", functi
   showScreen("report_pdf");
 });
 
+// ===== PDF TUTANAK OLUŞTURMA =====
+// Resmi tutanak formatındaki kusur kontrol listesi
 var CHECKLIST_ITEMS = [
   "Kırmızı ışık ihlalinde bulunmak",
   "Taşıt giremez işareti bulunan karayoluna girmek",
@@ -1712,6 +1740,7 @@ document.getElementById("view-updated-pdf-btn").addEventListener("click", functi
   showScreen("report_pdf");
 });
 
+// ===== HASAR DOSYASI TAKİP SİSTEMİ =====
 function addClaim(claim) {
   state.claims.unshift(claim);
   state.currentClaim = claim;
@@ -1756,6 +1785,7 @@ function renderClaims() {
   });
 }
 
+// ===== ARIZA TEŞHİSİ (fotoğraftan AI analiz) =====
 document.getElementById("diag-photo-btn").addEventListener("click", function() {
   var btn = document.getElementById("diag-photo-btn");
   btn.textContent = "Analiz ediliyor...";
@@ -1882,6 +1912,7 @@ document.getElementById("injury-notify-health-btn").addEventListener("click", fu
   btn.style.borderColor = "#2F9E44";
 });
 
+// ===== YOL YARDIM TAKİP (canlı ETA geri sayım) =====
 function startTracking(title, sub, startMinutes) {
   document.getElementById("tracking-title").textContent = title;
   document.getElementById("tracking-sub").textContent = sub;
@@ -1906,7 +1937,7 @@ document.getElementById("tracking-continue-btn").addEventListener("click", funct
   showScreen("breakdown_result");
 });
 
-// Declaration pipeline event listeners
+// ===== KAZA BEYANI FORM İŞLEMLERİ (harita, fotoğraf, mikrofon) =====
 document.getElementById("decl-map-container").addEventListener("click", function(e) {
   var rect = this.getBoundingClientRect();
   var x = e.clientX - rect.left;
@@ -1939,6 +1970,7 @@ showScreen = function(name) {
   origShowScreen(name);
 };
 
+// Mock fotoğraf çekme butonu simülasyonu
 function mockPhotoBtn(btnId) {
   document.getElementById(btnId).addEventListener("click", function() {
     var btn = document.getElementById(btnId);
@@ -1961,6 +1993,7 @@ mockPhotoBtn("decl-photo2-btn");
 mockPhotoBtn("decl-photo3-btn");
 mockPhotoBtn("decl-photo4-btn");
 
+// Sesli beyan (mikrofon) toggle
 var micRecording = false;
 document.getElementById("decl-mic-btn").addEventListener("click", function() {
   var btn = document.getElementById("decl-mic-btn");
@@ -1982,6 +2015,7 @@ document.getElementById("decl-mic-btn").addEventListener("click", function() {
   }
 });
 
+// Beyan tamamlama — özet ekranını doldur ve hasar dosyası oluştur
 document.getElementById("decl-complete-btn").addEventListener("click", function() {
   var textarea = document.getElementById("decl-speech-text");
   if (!textarea.value.trim()) {
@@ -2044,6 +2078,7 @@ document.getElementById("collision-qr-continue-btn").addEventListener("click", f
   showScreen("report_photo");
 });
 
+// Sahte QR kod SVG çizimi
 function drawFakeQR() {
   var svg = document.getElementById("qr-code-svg");
   var cell = 8, cols = 17;
@@ -2072,6 +2107,7 @@ document.getElementById("web-link-joined-btn").addEventListener("click", functio
   setTimeout(goToCounterpartyConfirm, 900);
 });
 
+// ===== KROKİ ÇİZİMİ & DİJİTAL İMZA (canvas) =====
 function setupCanvasDrawing(canvasId) {
   var canvas = document.getElementById(canvasId);
   var ctx = canvas.getContext("2d");
@@ -2099,11 +2135,13 @@ function setupCanvasDrawing(canvasId) {
   return ctx;
 }
 
+// Kroki canvas başlat ve temizle butonu
 var sketchCtx = setupCanvasDrawing("sketch-canvas");
 document.getElementById("sketch-clear-btn").addEventListener("click", function() {
   sketchCtx.clearRect(0, 0, 300, 220);
 });
 
+// İmza canvas — A/B sürücü geçişi ve gönderim
 var signatureCtx = setupCanvasDrawing("signature-canvas");
 document.getElementById("signature-clear-btn").addEventListener("click", function() {
   signatureCtx.clearRect(0, 0, 300, 140);
