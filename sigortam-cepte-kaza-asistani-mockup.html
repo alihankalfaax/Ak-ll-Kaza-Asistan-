@@ -444,7 +444,7 @@
         <p class="sub" style="text-align:center;">Kamu malına zarar verildiğinde polis tutanağı zorunludur. Lütfen 155'i arayarak olay yerine polis ekibi çağırın.</p>
 
         <a href="tel:155" style="display:flex; align-items:center; justify-content:center; gap:10px; width:100%; background:#E03131; border:none; color:#fff; border-radius:14px; padding:22px; font-size:20px; font-weight:800; text-decoration:none; margin-bottom:14px;">
-          <i class="ti ti-phone-call" style="font-size:28px;"></i> 155'i Ara (Polis)
+          <i class="ti ti-phone-call" style="font-size:28px;"></i> 112'yi Ara(Polis)
         </a>
 
         <div class="summary-card" style="margin-bottom:14px;">
@@ -673,15 +673,15 @@
           <p class="label">Fotoğraflar</p>
           <p class="value" id="decl-done-photos">-</p>
         </div>
-        <button type="button" class="btn-primary" id="decl-to-damage-btn">Devam Et: Hasar Tespiti</button>
+        <button type="button" class="btn-primary" id="decl-to-damage-btn">Devam Et: Hasar Tahmini</button>
         <button type="button" class="btn-outline" data-go="home">Ana Sayfaya Dön</button>
       </div>
 
       <!-- ===== QR KOD PAYLAŞIM & KARŞI TARAF DAVETİ ===== -->
       <div data-screen="collision_qr" style="display:none;">
         <button type="button" class="btn-back" data-go="guide"><i class="ti ti-chevron-left"></i>Geri</button>
-        <h2>Karşı Tarafa QR Paylaş</h2>
-        <p class="sub">Karşı taraf sürücüsüne aşağıdaki QR kodu gösterin. Karşı taraf QR'ı tarayarak bilgilerini sisteme girebilir.</p>
+        <h2>Karşı Taraf ile QR Paylaş</h2>
+        <p class="sub">Karşı taraf QR'ı okutarak Sigortam Cepte üzerinden Mobil KTT işlemine giriş yapabilir.</p>
 
         <div style="text-align:center; margin-bottom:16px;">
           <div style="display:inline-block; background:#fff; border-radius:16px; padding:20px; border:1.5px solid #E5E7EB;">
@@ -749,8 +749,8 @@
 
       <!-- ===== HASAR TESPİTİ & TUTANAK OLUŞTURMA ===== -->
       <div data-screen="report_photo" style="display:none;">
-        <button type="button" class="btn-back" data-go="guide"><i class="ti ti-chevron-left"></i>Geri</button>
-        <h2>Hasar Tespiti</h2>
+        <button type="button" class="btn-back" id="report-photo-back-btn" data-go="guide"><i class="ti ti-chevron-left"></i>Geri</button>
+        <h2>Hasar Tahmini</h2>
         <p class="sub">Fotoğraf eklerseniz süreç hızlanır.</p>
         <p class="field-label"><i class="ti ti-camera"></i>Hasar fotoğrafı</p>
         <button type="button" id="photo-btn" class="field-btn">Fotoğraf çek</button>
@@ -759,15 +759,48 @@
           <div id="ai-result-body" class="ai-body"></div>
         </div>
         <div class="info-box blue"><i class="ti ti-info-circle"></i> Bu bir ön tahmindir. Kesin karar sigorta eksperi tarafından verilir.</div>
-        <button type="button" class="btn-primary" data-go="report_note">Devam Et</button>
+        <button type="button" class="btn-primary" id="report-photo-continue-btn">Devam Et</button>
       </div>
 
       <div data-screen="report_note" style="display:none;">
-        <button type="button" class="btn-back" data-go="report_photo"><i class="ti ti-chevron-left"></i>Geri</button>
+        <button type="button" class="btn-back" id="report-note-back-btn" data-go="report_photo"><i class="ti ti-chevron-left"></i>Geri</button>
         <h2>Kaza Takip Tutanağı hazırlamamıza yardım edin</h2>
-        <p class="field-label"><i class="ti ti-map-pin"></i>Konum</p>
-        <p class="muted" style="margin-bottom:6px;">Rapor için konum bilgisi sağlayın.</p>
-        <button type="button" id="loc-btn" class="field-btn">Konumu otomatik al</button>
+        <p class="field-label"><i class="ti ti-map-pin"></i> Kaza Konumu</p>
+        <div id="report-map-container" style="position:relative; width:100%; height:200px; border-radius:14px; overflow:hidden; margin-bottom:6px; cursor:crosshair; border:1px solid #E5E7EB;">
+          <svg viewBox="0 0 400 240" width="100%" height="100%" style="background:linear-gradient(135deg,#dce8d4 0%,#c8dbb8 100%);">
+            <rect x="0" y="105" width="400" height="30" fill="#e8e3d8" rx="2"/>
+            <rect x="175" y="0" width="30" height="240" fill="#e8e3d8" rx="2"/>
+            <line x1="190" y1="0" x2="190" y2="240" stroke="#fff" stroke-width="1.5" stroke-dasharray="8,6"/>
+            <line x1="0" y1="120" x2="400" y2="120" stroke="#fff" stroke-width="1.5" stroke-dasharray="8,6"/>
+            <rect x="20" y="20" width="50" height="40" fill="#b8c8d8" rx="4" opacity="0.6"/>
+            <rect x="90" y="30" width="35" height="30" fill="#c0b8a8" rx="4" opacity="0.6"/>
+            <rect x="220" y="15" width="60" height="45" fill="#b8c8d8" rx="4" opacity="0.6"/>
+            <rect x="310" y="25" width="45" height="35" fill="#c0b8a8" rx="4" opacity="0.6"/>
+            <rect x="25" y="155" width="55" height="40" fill="#b0c0b0" rx="4" opacity="0.6"/>
+            <rect x="100" y="160" width="40" height="35" fill="#c0b8a8" rx="4" opacity="0.6"/>
+            <rect x="220" y="150" width="50" height="45" fill="#b8c8d8" rx="4" opacity="0.6"/>
+            <rect x="300" y="160" width="60" height="38" fill="#b0c0b0" rx="4" opacity="0.6"/>
+            <circle cx="160" cy="50" r="10" fill="#8cb878" opacity="0.5"/>
+            <circle cx="250" cy="200" r="12" fill="#8cb878" opacity="0.5"/>
+            <circle cx="350" cy="80" r="9" fill="#8cb878" opacity="0.5"/>
+            <g id="report-map-pin" style="display:none;">
+              <circle cx="0" cy="0" r="8" fill="rgba(227,49,49,0.2)"/>
+              <path d="M0,-22 C-6,-22 -11,-17 -11,-11 C-11,-4 0,2 0,2 C0,2 11,-4 11,-11 C11,-17 6,-22 0,-22Z" fill="#E03131" stroke="#fff" stroke-width="1.5"/>
+              <circle cx="0" cy="-11" r="3.5" fill="#fff"/>
+            </g>
+          </svg>
+          <div id="report-map-hint" style="position:absolute; bottom:8px; left:50%; transform:translateX(-50%); background:rgba(22,35,63,0.8); color:#fff; font-size:11px; font-weight:600; padding:5px 12px; border-radius:8px; pointer-events:none;">
+            Haritaya tıklayarak konumu işaretleyin
+          </div>
+        </div>
+        <div id="report-map-coords" style="display:none; margin-bottom:10px;">
+          <div style="display:flex; align-items:center; gap:6px; background:#E7F7EA; border-radius:10px; padding:8px 12px;">
+            <i class="ti ti-map-pin" style="color:#2F9E44;"></i>
+            <span style="font-size:12px; font-weight:700; color:#2F9E44;" id="report-coords-text"></span>
+          </div>
+        </div>
+        <p class="field-label"><i class="ti ti-road"></i> Adres / Yol Tarifi</p>
+        <textarea id="report-address" placeholder="Örn: E-5 Otoyolu, Zincirlikuyu çıkışı, İstanbul yönü"></textarea>
         <p class="field-label"><i class="ti ti-notes"></i>Açıklama</p>
         <p class="muted" style="margin-bottom:6px;">Kaza nasıl gerçekleşti? Bu bilgi otomatik tutanağa eklenecek.</p>
         <textarea id="note-input" placeholder="Örn: Kavşakta sağdan gelen araç kırmızı ışıkta geçti ve sağ ön tarafıma çarptı."></textarea>
@@ -784,8 +817,6 @@
         <input class="text-input" id="prev-datetime" readonly>
         <p class="field-label">Konum</p>
         <input class="text-input" id="prev-location" readonly>
-        <p class="field-label">AI Hasar Şiddeti</p>
-        <input class="text-input" id="prev-severity" readonly>
         <p class="field-label">Açıklama</p>
         <textarea id="prev-note"></textarea>
 
@@ -853,13 +884,27 @@
 
       <div data-screen="collision_signature" style="display:none;">
         <button type="button" class="btn-back" data-go="collision_sketch"><i class="ti ti-chevron-left"></i>Geri</button>
+
+        <div style="display:flex; gap:8px; margin-bottom:14px;">
+          <div id="sign-status-a" style="flex:1; background:#E9EEFC; border-radius:10px; padding:8px 10px; text-align:center; font-size:12px; font-weight:700; color:#3B5BDB; border:2px solid #3B5BDB;">A Sürücüsü</div>
+          <div id="sign-status-b" style="flex:1; background:#F1F2F6; border-radius:10px; padding:8px 10px; text-align:center; font-size:12px; font-weight:700; color:#9CA3AF; border:2px solid transparent;">B Sürücüsü</div>
+        </div>
+
+        <div id="sign-a-done" style="display:none; background:#E7F7EA; border-radius:12px; padding:10px 14px; margin-bottom:12px; display:none;">
+          <div style="display:flex; align-items:center; gap:8px;">
+            <i class="ti ti-check" style="color:#2F9E44; font-size:18px;"></i>
+            <span style="font-size:13px; font-weight:700; color:#2F9E44;">A Sürücüsü imzaladı</span>
+          </div>
+          <img id="sign-a-preview" style="width:100%; height:50px; object-fit:contain; margin-top:6px; opacity:0.5;" />
+        </div>
+
         <h2 id="sign-title" style="margin-bottom:4px;">A Sürücüsü İmzası</h2>
         <p class="sub" id="sign-sub">Kaza tespit tutanağını onaylamak için imzanızı atın.</p>
         <div style="background:#fff; border:1.5px dashed #C7CEDD; border-radius:14px; overflow:hidden; margin-bottom:10px;">
           <canvas id="signature-canvas" width="300" height="140" style="width:100%; height:140px; touch-action:none; cursor:crosshair; display:block;"></canvas>
         </div>
         <button type="button" class="btn-outline" id="signature-clear-btn" style="margin-bottom:4px;"><i class="ti ti-eraser" style="vertical-align:-2px;"></i> Temizle</button>
-        <button type="button" class="btn-primary" id="signature-next-btn">İmzalandı — Telefonu Karşı Tarafa Uzatın</button>
+        <button type="button" class="btn-primary" id="signature-next-btn">İmzala — Telefonu Karşı Tarafa Uzatın</button>
       </div>
 
       <div data-screen="report_counterparty" style="display:none;">
@@ -878,7 +923,6 @@
         <input class="text-input" id="cp-phone" placeholder="Telefon Numarası">
         <p class="field-label">Karşı Tarafın Sürücü Görüşü</p>
         <textarea id="cp-statement" placeholder="Karşı tarafın beyanı..." style="min-height:60px;"></textarea>
-        <div class="info-box blue"><i class="ti ti-database"></i> Bilgiler SBM/TRAMER sorgusuyla otomatik dolduruldu (demo).</div>
         <button type="button" class="btn-primary" data-go="collision_sketch">Devam Et: Kroki Çizimi</button>
       </div>
 
@@ -893,23 +937,15 @@
         <div class="summary-card">
           <p class="label">Olay Türü</p>
           <p class="value" id="sent-type">-</p>
-          <p class="label">AI Hasar Şiddeti</p>
-          <p class="value" id="sent-severity">-</p>
           <div id="counterparty-status-row" style="display:none;">
             <p class="label">Karşı Taraf Durumu</p>
             <p class="value"><span class="badge badge-pending" id="counterparty-badge">Bekleniyor</span></p>
           </div>
         </div>
-        <div id="counterparty-sim-box" style="display:none; margin-bottom:12px;">
-          <p class="muted" style="margin-bottom:8px;">(Demo) Karşı taraf yanıtını simüle et — beyanı otomatik günceller:</p>
-          <div style="display:flex; gap:8px; margin-bottom:10px;">
-            <button type="button" class="btn-outline" style="margin-top:0;" onclick="setCounterpartyStatus('approved')">Onayladı</button>
-            <button type="button" class="btn-outline" style="margin-top:0; border-color:#E03131; color:#E03131;" onclick="setCounterpartyStatus('disputed')">İtiraz Etti</button>
-          </div>
-          <button type="button" class="btn-outline" id="view-updated-pdf-btn"><i class="ti ti-file-text" style="vertical-align:-2px;"></i> Güncellenmiş Tutanağı Görüntüle</button>
-        </div>
-        <div class="info-box green"><i class="ti ti-clock"></i> Ekibimiz genellikle 24 saat içinde dönüş yapar.</div>
-        <button type="button" class="btn-primary" data-go="home">Ana Sayfaya Dön</button>
+        <div id="counterparty-sim-box" style="display:none;"></div>
+        <div class="info-box green"><i class="ti ti-clock"></i> İlgili dosya acentenize gönderildi. Ekiplerimiz genellikle 24 saat içinde dönüş yapar.</div>
+        <button type="button" class="btn-primary" id="report-sent-damage-btn" style="display:none;">Devam Et: Hasar Tahmini</button>
+        <button type="button" class="btn-outline" data-go="home">Ana Sayfaya Dön</button>
       </div>
 
       <div data-screen="breakdown_diagnosis" style="display:none;">
@@ -1047,7 +1083,7 @@
           <div class="step"><span class="step-num">3</span><span class="step-text">Kaza yerini işaretleyin.</span></div>
         </div>
 
-        <button type="button" class="btn-primary btn-danger" id="injury-called-btn">Evet, 112'yi aradım / yardım geldi</button>
+        <button type="button" class="btn-primary btn-danger" id="injury-called-btn">Evet, 112'yi aradım</button>
         <button type="button" class="btn-outline" id="injury-notify-contact-btn"><i class="ti ti-message-circle" style="vertical-align:-2px;"></i> Acil durum kişisine konum gönder</button>
         <button type="button" class="btn-outline" id="injury-notify-health-btn"><i class="ti ti-first-aid-kit" style="vertical-align:-2px;"></i> Sağlık Bilgilerimi Göster</button>
         <button type="button" class="btn-outline" data-go="home">Ana Sayfaya Dön</button>
@@ -1157,11 +1193,11 @@ var PROGRESS_STEPS = {
   declaration_speech: 7,
   declaration_done: 8,
   collision_qr: 3,
-  report_photo: 3,
-  report_note: 4,
-  report_counterparty: 5,
-  report_preview: 6,
-  report_pdf: 7,
+  report_photo: 0,
+  report_note: 3,
+  report_counterparty: 4,
+  report_preview: 5,
+  report_pdf: 6,
   breakdown_diagnosis: 3,
   injury_kvkk: 2,
   injury_action: 3,
@@ -1174,7 +1210,7 @@ function progressTotal() {
   if (state.type === "breakdown") return 3;
   if (state.type === "injury") return 4;
   if (state.type === "fire") return 4;
-  if (state.type === "collision") return 8;
+  if (state.type === "collision") return 9;
   if (state.type === "single") return 8;
   return 6;
 }
@@ -1183,11 +1219,12 @@ function updateProgress(screenName) {
   var current = PROGRESS_STEPS[screenName];
   if (state.type === "collision") {
     if (screenName === "collision_qr") current = 3;
-    if (screenName === "report_photo") current = 4;
-    if (screenName === "report_note") current = 5;
-    if (screenName === "report_counterparty") current = 6;
-    if (screenName === "report_preview") current = 7;
-    if (screenName === "report_pdf") current = 8;
+    if (screenName === "report_note") current = 4;
+    if (screenName === "report_counterparty") current = 5;
+    if (screenName === "collision_sketch") current = 6;
+    if (screenName === "collision_signature") current = 7;
+    if (screenName === "report_preview") current = 8;
+    if (screenName === "report_pdf") current = 9;
   }
   if (state.type !== "collision" && state.type !== "single" && screenName === "report_preview") current = 5;
   if (state.type !== "collision" && state.type !== "single" && screenName === "report_pdf") current = 6;
@@ -1200,11 +1237,11 @@ function updateProgress(screenName) {
 
 // Olay türleri (çarpışma, tekli kaza, arıza, yangın, yaralanma)
 var TYPES = [
-  { id: "collision", label: "Çarpışma (başka araçla)", icon: "ti-car", urgent: false },
-  { id: "single", label: "Tekli kaza (bariyer/ağaç)", icon: "ti-tree", urgent: false },
-  { id: "breakdown", label: "Arıza / yolda kaldım", icon: "ti-tool", urgent: false },
-  { id: "fire", label: "Yangın / duman", icon: "ti-flame", urgent: true },
-  { id: "injury", label: "Yaralanma var", icon: "ti-first-aid-kit", urgent: true }
+  { id: "collision", label: "Çarpışma", icon: "ti-car", urgent: false },
+  { id: "single", label: "Tek Taraflı Kazalar", icon: "ti-tree", urgent: false },
+  { id: "breakdown", label: "Arıza ve Yolda Kalma", icon: "ti-tool", urgent: false },
+  { id: "fire", label: "Yangın ve Duman", icon: "ti-flame", urgent: true },
+  { id: "injury", label: "Yaralanma Var", icon: "ti-first-aid-kit", urgent: true }
 ];
 
 // Her olay türü için acil durum rehber adımları
@@ -1242,9 +1279,9 @@ var GUIDES = {
 
 // AI hasar tahmin sonuçları (demo verisi)
 var AI_RESULTS = [
-  { severity: "Hafif", detail: "Yüzeysel çizik tespit edildi. Tahmini onarım: 1-2 gün.", cost: "2.500 - 4.000 TL" },
-  { severity: "Orta", detail: "Tampon deformasyonu olası. Tahmini onarım: 3-5 gün.", cost: "6.000 - 12.000 TL" },
-  { severity: "Ağır", detail: "Yapısal hasar şüphesi. Ekspertiz önerilir.", cost: "15.000 TL ve üzeri" }
+  { severity: "Hafif", detail: "Yüzeysel çizik tespit edildi. <br> Tahmini onarım: 1-2 gün.", cost: "2.500 - 4.000 TL" },
+  { severity: "Orta", detail: "Tampon deformasyonu olası. <br> Tahmini onarım: 3-5 gün.", cost: "6.000 - 12.000 TL" },
+  { severity: "Ağır", detail: "Yapısal hasar şüphesi. <br> Ekspertiz önerilir.", cost: "15.000 TL ve üzeri" }
 ];
 
 // Arıza teşhis senaryoları (motor, akü, sıcaklık, yakıt)
@@ -1304,12 +1341,13 @@ function fillPreviewFields() {
     var addrVal = document.getElementById("decl-address").value;
     if (addrVal) locText += " — " + addrVal;
     document.getElementById("prev-location").value = locText;
-    document.getElementById("prev-severity").value = "Fotoğraflar üzerinden eksper değerlendirmesi yapılacak";
     document.getElementById("prev-note").value = document.getElementById("decl-speech-text").value || NOTE_SAMPLE;
   } else {
     document.getElementById("prev-datetime").value = new Date().toLocaleString("tr-TR");
-    document.getElementById("prev-location").value = "İstanbul, Zincirlikuyu Kavşağı (41.02760, 28.97840)";
-    document.getElementById("prev-severity").value = state.severity ? state.severity.severity + " - " + state.severity.cost : "Belirtilmedi";
+    var repLoc = state.reportCoords ? state.reportCoords.lat + ", " + state.reportCoords.lng : "41.02760, 28.97840";
+    var repAddr = document.getElementById("report-address").value;
+    if (repAddr) repLoc += " — " + repAddr;
+    document.getElementById("prev-location").value = repLoc;
     document.getElementById("prev-note").value = document.getElementById("note-input").value || NOTE_SAMPLE;
   }
 
@@ -1366,10 +1404,10 @@ function loadGuide(typeId) {
     btn.textContent = "Devam Et: Kaza Beyanı";
     btn.onclick = function() { showScreen("declaration_personal"); };
   } else if (typeId === "collision") {
-    btn.textContent = "Devam Et: QR Paylaş";
+    btn.textContent = "Devam Et: Mobil KTT";
     btn.onclick = function() { showScreen("collision_qr"); };
   } else {
-    btn.textContent = "Devam Et: Hasar Tespiti";
+    btn.textContent = "Devam Et: Hasar Tahmini";
     btn.onclick = function() { showScreen("report_photo"); };
   }
 }
@@ -1390,12 +1428,21 @@ document.querySelectorAll("[data-go]").forEach(function(btn) {
   });
 });
 
-document.getElementById("loc-btn").addEventListener("click", function() {
-  var btn = document.getElementById("loc-btn");
-  btn.textContent = "41.02760, 28.97840";
-  btn.style.color = "#2F9E44";
-  btn.style.borderStyle = "solid";
-  btn.style.borderColor = "#2F9E44";
+document.getElementById("report-map-container").addEventListener("click", function(e) {
+  var rect = this.getBoundingClientRect();
+  var x = e.clientX - rect.left;
+  var y = e.clientY - rect.top;
+  var svgX = (x / rect.width) * 400;
+  var svgY = (y / rect.height) * 240;
+  var pin = document.getElementById("report-map-pin");
+  pin.setAttribute("transform", "translate(" + svgX + "," + svgY + ")");
+  pin.style.display = "block";
+  document.getElementById("report-map-hint").style.display = "none";
+  var lat = (41.10 - (svgY / 240) * 0.15).toFixed(5);
+  var lng = (28.90 + (svgX / 400) * 0.15).toFixed(5);
+  state.reportCoords = { lat: lat, lng: lng };
+  document.getElementById("report-coords-text").textContent = lat + ", " + lng + " — Konum işaretlendi";
+  document.getElementById("report-map-coords").style.display = "block";
 });
 
 document.getElementById("photo-btn").addEventListener("click", function() {
@@ -1412,7 +1459,7 @@ document.getElementById("photo-btn").addEventListener("click", function() {
     state.severity = pick;
     var resultBox = document.getElementById("ai-result");
     var resultBody = document.getElementById("ai-result-body");
-    resultBody.innerHTML = "Şiddet: <strong>" + pick.severity + "</strong><br>" + pick.detail + "<br>Tahmini maliyet: " + pick.cost;
+    resultBody.innerHTML = "Şiddet: <strong>" + pick.severity + "</strong><br>" + pick.detail;
     resultBox.style.display = "block";
   }, 900);
 });
@@ -1587,7 +1634,7 @@ function generateAndShowPDF() {
   if (y > 240) { doc.addPage(); y = 15; }
 
   // 9- İlk darbe noktası
-  var severityInfo = document.getElementById("prev-severity").value;
+  var severityInfo = state.severity ? state.severity.severity + " - " + state.severity.detail : "Eksper değerlendirmesi yapılacak";
   doc.autoTable({
     startY: y,
     theme: "grid",
@@ -1678,7 +1725,6 @@ function finalizeReport() {
   var fileNo = "#2026-" + Math.floor(100000 + Math.random() * 900000);
   document.getElementById("file-no").textContent = fileNo;
   document.getElementById("sent-type").textContent = typeInfo ? typeInfo.label : "-";
-  document.getElementById("sent-severity").textContent = state.severity ? state.severity.severity + " - " + state.severity.cost : "Belirtilmedi";
   var cpRow = document.getElementById("counterparty-status-row");
   var cpSimBox = document.getElementById("counterparty-sim-box");
 
@@ -1689,13 +1735,16 @@ function finalizeReport() {
     stage: 2
   });
 
+  var dmgBtn = document.getElementById("report-sent-damage-btn");
   if (state.type === "collision") {
     cpRow.style.display = "block";
     cpSimBox.style.display = "block";
     setCounterpartyStatus("pending");
+    dmgBtn.style.display = "block";
   } else {
     cpRow.style.display = "none";
     cpSimBox.style.display = "none";
+    dmgBtn.style.display = "none";
   }
   showScreen("report_sent");
 }
@@ -1734,11 +1783,6 @@ function setCounterpartyStatus(status) {
     renderClaims();
   }
 }
-
-document.getElementById("view-updated-pdf-btn").addEventListener("click", function() {
-  generateAndShowPDF();
-  showScreen("report_pdf");
-});
 
 // ===== HASAR DOSYASI TAKİP SİSTEMİ =====
 function addClaim(claim) {
@@ -1955,6 +1999,18 @@ document.getElementById("decl-map-container").addEventListener("click", function
   document.getElementById("decl-map-coords").style.display = "block";
 });
 
+document.getElementById("report-sent-damage-btn").addEventListener("click", function() {
+  showScreen("report_photo");
+});
+
+document.getElementById("report-photo-continue-btn").addEventListener("click", function() {
+  if (state.type === "collision" || state.type === "single") {
+    showScreen("home");
+  } else {
+    showScreen("report_note");
+  }
+});
+
 function showScreenHook(name) {
   if (name === "declaration_location") {
     var now = new Date();
@@ -1962,6 +2018,23 @@ function showScreenHook(name) {
     var hours = String(now.getHours()).padStart(2, "0");
     var mins = String(now.getMinutes()).padStart(2, "0");
     document.getElementById("decl-time").value = hours + ":" + mins;
+  }
+  if (name === "report_photo") {
+    var backTarget = state.type === "collision" ? "report_sent" : (state.type === "single" ? "declaration_done" : "guide");
+    document.getElementById("report-photo-back-btn").setAttribute("data-go", backTarget);
+    var photoContinueBtn = document.getElementById("report-photo-continue-btn");
+    if (state.type === "collision" || state.type === "single") {
+      photoContinueBtn.textContent = "Tamamla ve Ana Sayfaya Dön";
+      document.getElementById("progress-wrap").style.display = "none";
+    } else {
+      photoContinueBtn.textContent = "Devam Et";
+    }
+  }
+  if (name === "report_note") {
+    document.getElementById("report-note-back-btn").setAttribute("data-go", state.type === "collision" ? "collision_qr" : "report_photo");
+  }
+  if (name === "collision_signature") {
+    resetSignatureScreen();
   }
 }
 var origShowScreen = showScreen;
@@ -2075,7 +2148,7 @@ document.getElementById("collision-copy-link-btn").addEventListener("click", fun
 });
 
 document.getElementById("collision-qr-continue-btn").addEventListener("click", function() {
-  showScreen("report_photo");
+  showScreen("report_note");
 });
 
 // Sahte QR kod SVG çizimi
@@ -2147,17 +2220,48 @@ document.getElementById("signature-clear-btn").addEventListener("click", functio
   signatureCtx.clearRect(0, 0, 300, 140);
 });
 
+var signaturePhase = "A";
+
 document.getElementById("signature-next-btn").addEventListener("click", function() {
   var btn = document.getElementById("signature-next-btn");
-  if (btn.textContent.indexOf("Karşı Tarafa") > -1) {
+  if (signaturePhase === "A") {
+    var canvas = document.getElementById("signature-canvas");
+    document.getElementById("sign-a-preview").src = canvas.toDataURL();
+    document.getElementById("sign-a-done").style.display = "block";
+
+    document.getElementById("sign-status-a").style.background = "#E7F7EA";
+    document.getElementById("sign-status-a").style.color = "#2F9E44";
+    document.getElementById("sign-status-a").style.borderColor = "#2F9E44";
+    document.getElementById("sign-status-a").innerHTML = '<i class="ti ti-check" style="vertical-align:-2px;"></i> A Sürücüsü';
+    document.getElementById("sign-status-b").style.background = "#E9EEFC";
+    document.getElementById("sign-status-b").style.color = "#3B5BDB";
+    document.getElementById("sign-status-b").style.borderColor = "#3B5BDB";
+
     signatureCtx.clearRect(0, 0, 300, 140);
     document.getElementById("sign-title").textContent = "B Sürücüsü İmzası";
     document.getElementById("sign-sub").textContent = "Karşı taraf da tutanağı onaylamak için imza atsın.";
-    btn.textContent = "Gönder";
+    btn.textContent = "İmzala ve Gönder";
+    signaturePhase = "B";
   } else {
     showScreen("report_preview");
   }
 });
+
+function resetSignatureScreen() {
+  signaturePhase = "A";
+  signatureCtx.clearRect(0, 0, 300, 140);
+  document.getElementById("sign-title").textContent = "A Sürücüsü İmzası";
+  document.getElementById("sign-sub").textContent = "Kaza tespit tutanağını onaylamak için imzanızı atın.";
+  document.getElementById("signature-next-btn").textContent = "İmzala — Telefonu Karşı Tarafa Uzatın";
+  document.getElementById("sign-a-done").style.display = "none";
+  document.getElementById("sign-status-a").style.background = "#E9EEFC";
+  document.getElementById("sign-status-a").style.color = "#3B5BDB";
+  document.getElementById("sign-status-a").style.borderColor = "#3B5BDB";
+  document.getElementById("sign-status-a").innerHTML = "A Sürücüsü";
+  document.getElementById("sign-status-b").style.background = "#F1F2F6";
+  document.getElementById("sign-status-b").style.color = "#9CA3AF";
+  document.getElementById("sign-status-b").style.borderColor = "transparent";
+}
 
 </script>
 </body>
